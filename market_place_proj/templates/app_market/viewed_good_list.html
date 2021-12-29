@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load i18n static goods_views %}
+
+{% block title %}{% trans 'Profile' %}{% endblock %}
+
+{% block content %}
+    <div class="Middle Middle_top">
+        {{ block.super }}
+
+        <div class="Section Section_column Section_columnLeft">
+            <div class="wrap">
+                {% include 'app_users/widgets/navigation.html' %}
+                <div class="Section-content">
+                    {% viewed_goods request 20 %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

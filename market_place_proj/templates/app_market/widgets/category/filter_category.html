@@ -1,0 +1,45 @@
+{% load static i18n %}
+
+<div class="Section-columnSection">
+	<header class="Section-header">
+		<strong class="Section-title">{% trans 'Filter' %} </strong>
+	</header>
+	<div class="Section-columnContent">
+		<form class="form" method="get">
+			<div class="form-group">
+				<div class="range Section-columnRange">
+					<input name="price_range" class="range-line" id="price_range" type="text" data-to="{{ price.max }}"
+					       data-from="{{ price.min }}" data-max="{{ price.max }}" data-min="{{ price.min }}" data-type="double">
+					<div class="range-price">{% trans 'Price:' %}
+						<div class="rangePrice"></div>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<input name="name_product" class="form-input form-input_full" id="title" type="text"
+				       placeholder="{% trans 'Product name' %}">
+			</div>
+			<div class="form-group">
+				<select class="form-select" name="seller">
+					<option disabled="disabled" selected="selected">{% trans 'Seller' %}</option>
+					{% for value in seller %}
+						<option value="{{ value.title_en }}">{{ value.title }}</option>
+					{% endfor %}
+				</select>
+			</div>
+			<div class="form-group">
+				<label class="toggle">
+					<input type="checkbox" name="in_stock">
+					<span class="toggle-box"></span>
+					<span class="toggle-text">{% trans 'Goods in stock' %}</span>
+				</label>
+			</div>
+			<div class="form-group">
+				<div class="buttons">
+
+					<input type="submit" value="{% trans 'Filter' %}" class="btn btn_square btn_dark btn_narrow">
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

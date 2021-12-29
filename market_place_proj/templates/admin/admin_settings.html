@@ -1,0 +1,50 @@
+{% extends 'admin/base_site.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Settings" %}{% endblock %}
+
+
+{% block content %}
+    <div class="fieldsets">
+        <h1>{% trans 'Admin panel settings page' %}</h1>
+
+        <h1>Cache reset</h1>
+        <p>{% trans "Here You can reset the cache of the full site or part site" %}</p>
+
+        <h4>{% trans "Full cache reset" %}</h4>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" name="full">{% trans "Reset" %}</button>
+        </form>
+
+        <h4>{% trans "Cache main page" %}</h4>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" name="main">{% trans "Reset" %}</button>
+        </form>
+
+        <h4>{% trans "Cache category" %}</h4>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" name="category">{% trans "Reset" %}</button>
+        </form>
+
+        <h4>{% trans "Cache goods" %}</h4>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" name="goods">{% trans "Reset" %}</button>
+        </form>
+
+        <h4>{% trans "Cache orders" %}</h4>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" name="orders">{% trans "Reset" %}</button>
+        </form>
+
+        <h4>{% trans "Cache discount" %}</h4>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" name="discount">{% trans "Reset" %}</button>
+        </form>
+    </div>
+{% endblock %}

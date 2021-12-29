@@ -1,0 +1,16 @@
+{% load static i18n %}
+<form class="form Payment" action="{% url 'payment' %}" method="post">
+    {% csrf_token %}
+    {{ form.pay_method }}
+    {{ form.order_id }}
+    <div class="Payment-card">
+        <div class="form-group">
+            <label class="form-label">{% trans 'Card number' %}
+            </label>
+            {{ form.card_number }}
+        </div>
+    </div>
+    <div class="Payment-pay">
+        <button class="btn btn_primary" type="submit">{% trans 'To pay' %}</button>
+    </div>
+</form>

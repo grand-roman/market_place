@@ -1,0 +1,17 @@
+{% load static i18n %}
+
+{% if tags %}
+    <div class="Section-columnSection">
+        <header class="Section-header">
+            <strong class="Section-title">{% trans 'Popular tags' %}
+            </strong>
+        </header>
+        <div class="Section-columnContent">
+            <div class="buttons">
+                {% for tag in tags %}
+                    <a class="btn btn_default btn_sm" href="#">{{ tag.tag__title }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endif %}

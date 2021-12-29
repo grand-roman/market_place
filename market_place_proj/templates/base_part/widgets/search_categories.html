@@ -1,0 +1,49 @@
+{% load static mptt_tags i18n %}
+
+<div class="Header-searchLink">
+	<img src="{% static 'assets/img/icons/search.svg' %}" alt="search.svg"/>
+</div>
+<div class="Header-search">
+	<div class="search">
+		<div class="form form_search">
+			<label>
+				<select name="my_city" class="block_filters_select">
+					<option value="" disabled selected>{% trans 'What are you looking for ...' %}</option>
+					{% recursetree categories %}
+						<optgroup label="{{ node.title }}">
+							{% if not node.is_leaf_node %}
+								{% for child in node.get_children %}
+									<option value="{% url 'category' child.slug %}">{{ child.title }}</option>
+								{% endfor %}
+								</optgroup>
+							{% endif %}
+					{% endrecursetree %}
+				</select>
+			</label>
+			<button class="search-button" onclick="location.href=$('select').val();">
+				<img src="{% static 'assets/img/icons/search.svg' %}" alt="search.svg"/>{% trans 'Search' %}
+			</button>
+		</div>
+	</div>
+</div>
+
+{% block scripts %}
+	<script>
+        $('button').on('click', function () {
+            window.location = $('select').val();
+        });
+	</script>
+	<script>
+        var elements = document.querySelectorAll('.block_filters_select');
+        elements.forEach(element => {
+            const choices = new Choices(element, {
+                silent: false,
+                searchEnabled: true,
+                shouldSort: false,
+                placeholder: false,
+                allowDuplicates: false
+            });
+
+        });
+	</script>
+{% endblock %}

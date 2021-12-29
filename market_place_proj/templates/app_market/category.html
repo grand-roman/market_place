@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static i18n goods_cards filter_catalog %}
+
+
+{% block content %}
+	<div class="Middle Middle_top">
+		{{ block.super }}
+		<div class="Section Section_column Section_columnLeft">
+			<div class="wrap">
+				<div class="Section-column">
+					{% get_filter %}
+					{% if slug %}
+						{% get_tags slug %}
+					{% endif %}
+				</div>
+				<div class="Section-content">
+					{% get_sorted request %}
+					{% if slug %}
+						{% get_goods request slug %}
+					{% else %}
+						{% get_goods_all request %}
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

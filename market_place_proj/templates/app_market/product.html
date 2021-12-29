@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+
+{% block content %}
+
+	<div class="Middle Middle_top">
+		{{ block.super }}
+
+		<div class="Section">
+			<div class="wrap">
+				<div class="Product">
+					<div class="ProductCard">
+						<div class="ProductCard-look">
+							<div class="ProductCard-photo">
+								{% if good.discount.active %}
+									{% if sale %}
+										<div class="ProductCard-sale">-{{ sale|floatformat:"0" }}%</div>{% endif %}
+								{% endif %}
+								{% if good.image.file %}
+									<img src="{{ good.image.file.url }}" alt="{{ good.image.title }}"/>
+								{% elif good.image.link %}
+									<img src="{{ good.image.link }}" alt="{{ good.image.title }}"/>
+								{% endif %}
+							</div>
+
+							<div class="ProductCard-picts">
+								{% for image in good.files.all %}
+									{% if image.file %}
+										<a class="ProductCard-pict ProductCard-pict_ACTIVE" href="{{ image.file.url }}">
+											<img src="{{ image.file.url }}" alt="{{ image.title }}"/>
+										</a>
+									{% elif image.link %}
+										<a class="ProductCard-pict ProductCard-pict_ACTIVE" href="{{ image.link }}">
+											<img src="{{ image.link }}" alt="{{ image.title }}"/>
+										</a>
+									{% endif %}
+								{% endfor %}
+							</div>
+						</div>
+						<div class="ProductCard-desc">
+							<div class="ProductCard-header">
+								<h2 class="ProductCard-title">{{ good.title }}</h2>
+								<div class="ProductCard-info">
+									<div class="ProductCard-cost">
+										{% if discounted_price %}
+											<div class="ProductCard-price">{{ discounted_price|floatformat:"2" }} ₽
+											</div>
+											<div class="ProductCard-priceOld">{{ avg_price|floatformat:"2" }} ₽</div>
+										{% else %}
+											<div class="ProductCard-price">{{ avg_price|floatformat:"2" }} ₽</div>
+										{% endif %}
+
+									</div>
+									<div class="ProductCard-compare">
+										<form action="{% url 'add_good_to_compare' id=good.pk %}"
+										      method="POST">
+											{% csrf_token %}
+											<button class="btn btn_default" type="submit">
+												<img class="btn-icon"
+												     src="{% static 'assets/img/icons/card/change.svg' %}"
+												     alt="change.svg"/>
+											</button>
+										</form>
+									</div>
+								</div>
+							</div>
+							<div class="ProductCard-text">
+								<ul>
+									<li>{% trans 'Type of product' %}: {{ good.good_type }}</li>
+									<li>{% trans 'Model' %}: {{ good.model }}</li>
+									<li>{% trans 'Мanufacturer' %}: {{ good.maker }}</li>
+								</ul>
+							</div>
+
+							<form class="ProductCard-cart"
+							      action="{% url 'good_in_cart' mtd='add_random_good' good_id=form.id.value %}"
+							      method="post">
+								{% csrf_token %}
+								{{ form.id }}
+								<div class="ProductCard-cartElement ProductCard-cartElement_amount">
+									<div class="Amount Amount_product">
+										<button class="Amount-remove" type="button"></button>
+										{{ form.count }}
+										<button class="Amount-add" type="button"></button>
+									</div>
+								</div>
+								<div class="ProductCard-cartElement">
+									<button class="btn btn_primary" type="submit">
+										<img class="btn-icon" src="{% static 'assets/img/icons/card/cart_white.svg' %}"
+										     alt="cart_white"/>
+										<span class="btn-content">{% trans 'Add To Cart' %}</span>
+									</button>
+								</div>
+							</form>
+							<div class="ProductCard-footer">
+								<div class="ProductCard-tags">
+									<strong class="ProductCard-tagsTitle">Tags: </strong>
+									{% for tag in good.tag.all %}
+										<a href="#">{{ tag.title }}</a>,
+									{% endfor %}
+								</div>
+							</div>
+						</div>
+					</div>
+					{% include 'app_market/widgets/product/base_detail_product_tabs.html' %}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

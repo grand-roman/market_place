@@ -1,0 +1,21 @@
+{% load i18n %}
+
+<div class="Middle-top">
+    <div class="wrap">
+        <div class="Middle-header">
+            <h1 class="Middle-title">{{ breadcrumbs|last|last }}</h1>
+            <ul class="breadcrumbs Middle-breadcrumbs">
+
+            {% for url, label in breadcrumbs %}
+                {% if not url or forloop.counter == breadcrumbs_total %}
+{#                    <li class="breadcrumbs-item{% if forloop.counter == breadcrumbs_total %} breadcrumbs-item_current{% endif %}">#}
+{#                        <span>{{ label|safe }}</span>#}
+{#                    </li>#}
+                {% else %}
+                    <li class="breadcrumbs-item"><a href="{{ url }}">{{ label|safe }}</a></li>
+                {% endif %}
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>

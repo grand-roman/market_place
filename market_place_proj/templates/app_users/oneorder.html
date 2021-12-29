@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block content %}
+    <div class="Middle Middle_top">
+        {{ block.super }}
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li {% if message.tags == 'error' %}class="Order-info Order-info_error"{% endif %}>
+                        {% if message.tags %} {% endif %} {{ message }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <div class="Section">
+            <div class="wrap">
+                <div class="Section-content">
+                    <div class="Orders">
+                    </div>
+                    <div class="Order">
+                        <div class="Order-infoBlock">
+                            <div class="Order-personal">
+                                <div class="row">
+                                    <div class="row-block">
+                                        <div class="Order-info Order-info_date">
+                                            <div class="Order-infoType">{% trans 'Order date' %}:</div>
+                                            <div class="Order-infoContent">{{ order.created_at|date:"d.m.o" }}</div>
+                                        </div>
+                                        <div class="Order-info">
+                                            <div class="Order-infoType">{% trans 'Full name' %}:</div>
+                                            <div class="Order-infoContent">{{ order.user.get_full_name }}</div>
+                                        </div>
+                                        <div class="Order-info">
+                                            <div class="Order-infoType">{% trans 'Phone' %}:</div>
+                                            <div class="Order-infoContent">{{ order.user.get_phone }}</div>
+                                        </div>
+                                        <div class="Order-info">
+                                            <div class="Order-infoType">{% trans 'Email' %}:</div>
+                                            <div class="Order-infoContent">{{ order.user.email }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row-block">
+                                        <div class="Order-info Order-info_delivery">
+                                            <div class="Order-infoType">{% trans "Type of delivery" %} :</div>
+                                            <div class="Order-infoContent">
+                                                {% if order.delivery == 'ordinary' %}
+                                                    {% trans 'Regular delivery' %}
+                                                    {% elif order.delivery == 'express' %}
+                                                    {% trans 'Express delivery' %}
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <div class="Order-info">
+                                            <div class="Order-infoType">{% trans 'City' %}:</div>
+                                            <div class="Order-infoContent">{{ order.city }}</div>
+                                        </div>
+                                        <div class="Order-info">
+                                            <div class="Order-infoType">{% trans 'Address' %}:</div>
+                                            <div class="Order-infoContent">{{ order.address }}</div>
+                                        </div>
+                                        <div class="Order-info Order-info_pay">
+                                            <div class="Order-infoType">{% trans 'Payment' %}:</div>
+                                            <div class="Order-infoContent">
+                                                {% if order.pay_method == 'online' %}
+                                                    {% trans 'Online Card' %}
+                                                    {% elif order.pay_method == 'someone' %}
+                                                    {% trans "Online from a random someone else's account" %}
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <div class="Order-info Order-info_status">
+                                            <div class="Order-infoType">{% trans 'Status' %}:</div>
+                                            <div class="Order-infoContent">
+                                                {% if order.status == 'pay_success' and order.closed == True %}
+                                                    {% trans 'Paid up' %}
+                                                    {% elif order.status == 'pay_success' and order.closed == False %}
+                                                    {% trans 'Delivered' %}
+                                                {% else %}
+                                                    {% trans 'Not paid' %}
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        {% if order.status == 'error' %}
+                                            <div class="Order-info Order-info_error">
+                                                <div class="Order-infoType">{% trans 'Payment failed' %}:</div>
+                                                <div class="Order-infoContent">
+                                                    {{ order.get_response.error }}
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="Cart Cart_order">
+
+                                {% for product in details.all %}
+                                    <div class="Cart-product">
+                                        <div class="Cart-block Cart-block_row">
+                                            <div class="Cart-block Cart-block_pict">
+                                                <a class="Cart-pict"
+                                                   href="{% url 'good_detail' product.cart.catalog.good.id %}">
+                                                    <img class="Cart-img"
+                                                            {% if product.cart.catalog.good.image.link %}
+                                                         src="{{ product.cart.catalog.good.image.link }}"
+                                                            {% elif product.cart.catalog.good.image.url %}
+                                                         src="{{ product.cart.catalog.good.image.url }}"
+                                                            {% else %}
+                                                            src="{% static 'assets/img/icons/nophoto.svg' %}"
+                                                         {% endif %}
+                                                         alt="{{ product.cart.catalog.good.good_type }}"/>
+                                                </a>
+                                            </div>
+                                            <div class="Cart-block Cart-block_info">
+                                                <a class="Cart-title"
+                                                   href="{% url 'good_detail' product.cart.catalog.good.id %}">{{ product.cart.catalog.good.title }}</a>
+                                                <div class="Cart-desc">{{ product.cart.catalog.good.good_type }}</div>
+                                            </div>
+                                            <div class="Cart-block Cart-block_price">
+                                                <div class="Cart-price">{{ product.price }}</div>
+                                            </div>
+                                        </div>
+                                        <div class="Cart-block Cart-block_row">
+                                            <div class="Cart-block Cart-block_seller">
+                                                <div>{% trans 'Seller' %}:</div>
+                                                <div>{{ product.cart.catalog.seller.title }}</div>
+                                            </div>
+                                            <div class="Cart-block Cart-block_amount">{{ product.count }}
+                                                {% trans 'ct.' %}</div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+
+
+                                <div class="Cart-total">
+                                    <div class="Cart-block Cart-block_total">
+                                        <strong class="Cart-title">
+                                            {% trans 'Total' %}:<span class="Cart-price">
+                                            {{ order.get_response.amount }}</span> {% trans '₽' %}
+                                        </strong>
+                                    </div>
+                                    {% if not order.status == 'pay_success' %}
+                                        <form class="Cart-block Cart-inline" method="post" action="">
+                                            <h1>{% trans 'specify the account or card number' %}</h1>
+                                            {% csrf_token %}
+                                            {{ form.as_p }}
+                                            <button type="submit" class="btn btn_primary btn_lg">
+                                                {% trans 'To pay' %}</button>
+                                        </form>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

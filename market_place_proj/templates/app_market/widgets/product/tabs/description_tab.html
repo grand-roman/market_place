@@ -1,0 +1,38 @@
+{% load static i18n %}
+
+<div class="Tabs-block" id="description">
+	<h2>{{ good.title }}</h2>
+	<p>{{ good.good_type }}</p>
+
+	{% if good.image.file %}
+		<img class="pict pict_right" src="{{ good.image.file.url }}" alt="{{ good.image.title }}"/>
+	{% elif good.image.link %}
+		<img class="pict pict_right" src="{{ good.image.link }}" alt="{{ good.image.title }}"/>
+	{% endif %}
+	<ul>
+
+		{% for line in good.description %}
+			{% if forloop.counter0 < 5 %}
+				<li>{{ line.0 }}: {{ line.1 }}</li>
+			{% endif %}
+		{% endfor %}
+	</ul>
+	<div class="clearfix">
+	</div>
+	{% if good.description %}
+		<div class="table">
+			<table>
+				<tr>
+					<th>{% trans 'Specifications' %}</th>
+					<th>{% trans 'Meaning' %}</th>
+				</tr>
+				{% for line in good.description %}
+					<tr>
+						<td>{{ line.0 }}</td>
+						<td>{{ line.1 }}</td>
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+	{% endif %}
+</div>

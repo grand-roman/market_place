@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+
+{% block content %}
+	<div class="Middle Middle_top">
+		{{ block.super }}
+
+		<div class="Section Section_column Section_columnLeft">
+			<div class="wrap">
+				{% include 'app_users/widgets/navigation.html' %}
+				<div class="Section-content">
+					<div class="Orders">
+						{% if orders %}
+							{% for order in orders %}
+								<div class="Order Order_anons">
+									<div class="Order-personal">
+										<div class="row">
+											<div class="row-block">
+												<a class="Order-title" href="{% url 'history_detail_order' order.pk %}">
+													{% trans 'Order' %}&#32;<span class="Order-numberOrder">
+													№{{ order.id }}</span>&#32;
+													{% trans 'from' %}&#32;<span class="Order-dateOrder">
+													{{ order.created_at|date:"d.m.o" }}</span>
+												</a>
+											</div>
+											<div class="row-block">
+												<div class="Order-info Order-info_delivery">
+													<div class="Order-infoType">{% trans 'Type of delivery' %}:</div>
+													<div class="Order-infoContent">
+														{% if order.delivery == 'ordinary' %}
+															{% trans 'Regular delivery' %}
+														{% elif order.delivery == 'express' %}
+															{% trans 'Express delivery' %}
+														{% endif %}
+													</div>
+												</div>
+												<div class="Order-info Order-info_pay">
+													<div class="Order-infoType">{% trans 'Payment' %}:</div>
+													<div class="Order-infoContent">
+														{% if order.pay_method == 'online' %}
+															{% trans 'Online Card' %}
+														{% elif order.pay_method == 'someone' %}
+															{% trans "Online from a random someone else's account" %}
+														{% endif %}
+													</div>
+												</div>
+												<div class="Order-info">
+													<div class="Order-infoType">{% trans 'Total price' %}:
+													</div>
+													<div class="Order-infoContent">
+														<span class="Order-price">{{ order.get_response.amount }} руб.</span>
+													</div>
+												</div>
+												<div class="Order-info Order-info_status">
+													<div class="Order-infoType">{% trans 'Status' %}:</div>
+													<div class="Order-infoContent">
+														{% if order.status == 'pay_success' and order.closed == True %}
+															{% trans 'Paid up' %}
+														{% elif order.status == 'pay_success' and order.closed == False %}
+															{% trans 'Delivered' %}
+														{% else %}
+															{% trans 'Not paid' %}
+														{% endif %}
+													</div>
+												</div>
+												{% if order.status == 'error' %}
+													<div class="Order-info Order-info_error">
+														<div class="Order-infoType">{% trans 'Payment failed' %}:</div>
+														<div class="Order-infoContent">
+															{{ order.get_response.error }}
+														</div>
+													</div>
+												{% endif %}
+											</div>
+										</div>
+									</div>
+								</div>
+							{% endfor %}
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,194 @@
+{% extends 'base.html' %}
+{% load static yellow_star i18n %}
+{% block content %}
+    <div class="Middle Middle_top">
+    <div class="Middle-top">
+        <div class="wrap">
+            <div class="Middle-header">
+                <h1 class="Middle-title">{% trans "Comparison of products" %}
+                </h1>
+                <ul class="breadcrumbs Middle-breadcrumbs">
+                    <li class="breadcrumbs-item"><a href="index.html">{% trans 'home' %}</a>
+                    </li>
+                    <li class="breadcrumbs-item breadcrumbs-item_current">
+                        <span>{% trans "Comparison of products" %}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="Section">
+    <div class="wrap">
+        {% if category_list|length == 0 %}
+            <h1>{% trans "Not enough data to compare" %}</h1>
+        {% endif %}
+        {% if compare_list %}
+            {% if category_list %}
+                <ul class="breadcrumbs Middle-breadcrumbs">
+                    {% for category in category_list %}
+                        <li><a href="{% url 'compare' id=category.pk %}">{{ category.title }}</a>
+                        </li>
+                    {% endfor %}
+                    <li>&nbsp;</li>
+                    <li><a href="{% url 'clear_compare' %}">{% trans 'Delete Comparisons' %}</a></li>
+                </ul>
+                <div>&nbsp</div>
+            {% endif %}
+            {% if compare_list.goods|length > 1 %}
+
+                <div class="Compare-header">
+                    <label class="toggle Compare-checkDifferent">
+                        <input type="checkbox" name="differentFeature" value="true" checked="checked"/><span
+                            class="toggle-box"></span><span
+                            class="toggle-text">{% trans "only differing characteristics" %}</span>
+                    </label>
+                </div>
+                <div class="Compare">
+                <!-- перечисление предпросмотра товаров -->
+
+                <div class="Compare-row">
+                    <div class="Compare-title Compare-title_blank">
+                    </div>
+                    <div class="Compare-products">
+                        {% if count == 0 %}
+                        {% else %}
+                            <h1>{{ compare_list.goods.count }}</h1>
+                            {% for good in compare_list.goods %}
+                                <div class="Compare-product">
+                                    <div class="Compare-nameProduct Compare-nameProduct_main">{{ good.title }}
+                                    </div>
+                                    <div class="Compare-feature">
+                                        {% if good.image.file %}
+                                            <img class="Compare-pict" src="{{ good.image.file.url }}"
+                                                 alt="card.jpg"/>
+                                        {% elif good.image.link %}
+                                            <img class="Compare-pict" src="{{ good.image.link }}" alt="card.jpg"/>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+                <!-- перечисление заголовков товаров -->
+                <div class="Compare-row">
+                    <div class="Compare-title Compare-title_blank">
+                    </div>
+                    <div class="Compare-products">
+                        {% for good in compare_list.goods %}
+                            <div class="Compare-product">
+                                <div class="Compare-nameProduct">{{ good.title }}
+                                </div>
+                                <div class="Compare-feature">
+                                    <form class="Card-btn"
+                                          action="{% url 'good_in_cart' mtd='add_random_good' good_id=good.pk %}"
+                                          method="POST">
+                                        {% csrf_token %}
+                                        <button class="Card-btn-form" type="submit">
+                                            <img src="{% static 'assets/img/icons/card/cart.svg' %}" alt="cart.svg"/>
+                                        </button>
+                                    </form>
+                                    <form class="Card-btn"
+                                          action="{% url 'delete_good_from_compare' id=good.pk %}"
+                                          method="POST">
+                                        {% csrf_token %}
+                                        <button class="Card-btn-form" type="submit">
+                                            <img src="{% static 'assets/img/icons/card/delete.svg' %}"
+                                                 alt="delete.svg"/>
+                                        </button>
+                                    </form>
+
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <!-- перечисление рейтингов товаров -->
+                <div class="Compare-row">
+                    <div class="Compare-title">{% trans "rating" %}
+                    </div>
+                    <div class="Compare-products">
+                        {% for rate in compare_list.rates %}
+                            <div class="Compare-product">
+                                <div class="Compare-nameProduct">{{ rate.title }}
+                                </div>
+                                <div class="Compare-feature">
+                                    <div class="Rating">
+                                        <div class="Rating-stars">
+                                            {% yellow_star 3 %}
+                                        </div>
+                                        <div class="Rating-title">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <!--перечисление свойств-->
+                {% for row in compare_list.props %}
+                    {% if row.unicue %}
+                        <div class="Compare-row">
+                    {% else %}
+                        <div class="Compare-row Compare-row_hide">
+                    {% endif %}
+                <div class="Compare-title">{{ row.row }}
+                </div>
+                <div class="Compare-products">
+                    {% for prop in row.values %}
+                        <div class="Compare-product">
+                            <div class="Compare-nameProduct">{{ prop.title }}
+                            </div>
+                            <div class="Compare-feature">
+                                {% if prop.value %}
+                                    {{ prop.value|linebreaks }}
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                </div>
+                {% endfor %}
+                <!-- price-->
+                <div class="Compare-row">
+                    <div class="Compare-title">{% trans "price" %}
+                    </div>
+                    <div class="Compare-products">
+                        {% for price in compare_list.prices %}
+                            <div class="Compare-product">
+                                <div class="Compare-nameProduct">{{ price.title }}
+                                </div>
+                                <div class="Compare-feature">
+                                    {% if price.price_with_discount %}
+                                        <strong class="Compare-priceOld">{{ price.price|floatformat:2 }} {% trans "₽" %}
+                                        </strong>
+                                        <strong class="Compare-price">{{ price.price_with_discount|floatformat:2 }} {% trans "₽" %}
+                                        </strong>
+                                    {% else %}
+                                        <strong class="Compare-price">{{ price.price|floatformat:2 }} {% trans "₽" %}
+                                        </strong>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% else %}
+                <h1>{% trans "Not enough data to compare" %}</h1>
+            {% endif %}
+        {% else %}
+            {% if category_list %}
+                <ul class="breadcrumbs Middle-breadcrumbs">
+                    {% for category in category_list %}
+                        <li><a href="{% url 'compare' id=category.pk %}">{{ category.title }}</a>
+                        </li>
+                    {% endfor %}
+                    <li>&nbsp;</li>
+                    <li><a href="{% url 'clear_compare' %}">{% trans 'Delete Comparisons' %}</a></li>
+                </ul>
+            {% endif %}
+        {% endif %}
+        </div>
+        </div>
+    </div>
+{% endblock %}

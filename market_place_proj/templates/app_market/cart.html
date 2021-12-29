@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+{% block content %}
+    <div class="Middle Middle_top">
+        <div class="Middle-top">
+            <div class="wrap">
+                <div class="Middle-header">
+                    <h1 class="Middle-title">{% trans 'Cart' %}
+                    </h1>
+                    <ul class="breadcrumbs Middle-breadcrumbs">
+                        <li class="breadcrumbs-item"><a href="{% url 'index' %}">{% trans 'home' %}</a>
+                        </li>
+                        <li class="breadcrumbs-item breadcrumbs-item_current"><span>{% trans 'Cart' %}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li class="{{ message.tags }}">
+                        {% if message.tags %} {% endif %}>{{ message }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <div class="Section">
+            <div class="wrap">
+                <div class="form Cart">
+                    {% csrf_token %}
+                    {% if formset %}
+                        {% for form in formset %}
+                            <form action="{% url 'cart' %}" method="POST">
+                                {% csrf_token %}
+                                {{ form.instance_id }}
+                                {{ form.good_id }}
+                                {{ form.cat_id }}
+                                {{ form.index }}
+                                {{ form.price }}
+                                {{ form.discounted_price }}
+                                {{ form.discounted_total_price }}
+                                {{ form.total_price }}
+                                {{ form.title }}
+                                {{ form.image }}
+                                {% for error in form.non_field_errors %}
+                                    {{ error }}
+                                {% endfor %}
+                                {% for error in form.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                                <div class="Cart-product">
+                                    <div class="Cart-block Cart-block_pict">
+                                        <a class="Cart-pict"
+                                           href="{% url 'good_detail' pk=form.good_id.value %}">
+                                            {% if form.image.value %}
+                                                <img alt="card.jpg" width="96px" src="{{ form.image.value }}">
+                                            {% else %}
+                                                <img width="48px" src="{% static 'assets/img/icons/nophoto.svg' %}"
+                                                     alt="no image">
+                                            {% endif %}
+                                        </a>
+                                    </div>
+                                    <div class="Cart-block Cart-block_info"><a class="Cart-title"
+                                                                               href="{% url 'good_detail' pk=form.good_id.value %}">
+                                        {{ form.title.value }}</a>
+                                        <div class="Cart-desc">
+                                            {% if form.group_discount %}
+                                                {{ form.group_discount.value }}
+                                            {% endif %}
+
+                                        </div>
+                                    </div>
+                                    <div class="Cart-block Cart-block_price">
+                                        {% if form.discounted_price.value %}
+                                            <div class="Cart-price">
+                                                {{ form.discounted_price.value|floatformat:2 }}</div>
+                                            <div class="Cart-price_old">
+                                                {{ form.total_price.value|floatformat:2 }}</div>
+                                        {% else %}
+                                            <div class="Cart-price">{{ form.total_price.value|floatformat:2 }}</div>
+                                        {% endif %}
+                                    </div>
+                                    <div class="Cart-block Cart-block_row">
+                                        <span class="menu-label menu-label_danger">{{ form.catalog.errors }}</span>
+                                        <div class="Cart-block Cart-block_seller">
+                                            {{ form.catalog }}
+                                        </div>
+                                        <div class="Cart-block Cart-block_amount">
+                                            <span class="menu-label menu-label_danger">{{ form.count.errors }}</span>
+
+                                            <span class="menu-label menu-label_danger"></span>
+                                            <div class="Cart-amount">
+                                                <div class="Amount">
+                                                    <button class="Amount-remove"
+                                                            type="submit">
+                                                    </button>
+                                                    {{ form.count }}
+                                                    <button class="Amount-add"
+                                                            type="submit">
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="Cart-block">
+                                            <button class="Cart-delete"
+                                                    formaction="{% url 'good_in_cart' mtd='delete_good' good_id=form.instance_id.value %}"
+                                                    formmethod="post" type="submit">
+                                                <img
+                                                        src="{% static 'assets/img/icons/card/delete.svg' %}"
+                                                        alt="delete.svg"/>
+                                            </button>
+                                        </div>
+                                        <div class="Cart-block">
+                                            <button class="Cart-delete" type="submit">
+                                                &#128190;
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </form>
+                        {% endfor %}
+                        <div class="Cart-total">
+                            <div class="Cart-block Cart-block_total">
+                                <strong class="Cart-title">{% trans 'total' %}:</strong>
+                                {% if discounted_total_price %}
+                                    <span class="Cart-price">{{ discounted_total_price|floatformat:"2" }} {% trans '₽' %}</span>
+                                    <span class="Cart-price_old">{{ total_price|floatformat:2 }} {% trans '₽' %}</span>
+                                {% else %}
+                                    <span class="Cart-price">{{ total_price|floatformat:2 }} {% trans '₽' %}</span>
+                                {% endif %}
+                                {% if has_cart_discount %}
+                                    <strong class="Cart-title">{% trans 'A discount on the shopping cart has been applied' %}</strong>
+                                    {{ variant }} :: {{ size }}
+                                {% endif %}
+                            </div>
+                            <div class="Cart-block">
+                                <a class="btn btn_success btn_lg" href="{% url 'ordering' %}" type="submit">
+                                    {% trans 'Place an order' %}
+                                </a>
+                            </div>
+                        </div>
+                    {% else %}
+                        <h1>{% trans 'Your shopping cart is empty :(' %}</h1>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+{% endblock %}

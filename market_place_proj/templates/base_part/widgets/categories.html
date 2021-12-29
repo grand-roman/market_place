@@ -1,0 +1,46 @@
+{% load static mptt_tags i18n %}
+
+
+<div class="Header-categories">
+    <div class="CategoriesButton">
+        <div class="CategoriesButton-title">
+            <div class="CategoriesButton-icon">
+                <img src="{% static 'assets/img/icons/allDep.svg' %}" alt="allDep.svg"/>
+            </div>
+
+            <span class="CategoriesButton-text">{% trans 'All Departments'%}</span>
+            <div class="CategoriesButton-arrow"></div>
+        </div>
+        <div class="CategoriesButton-content">
+            {% recursetree categories %}
+                <div class="CategoriesButton-link">
+                    <a href="{% url 'category' slug=node.slug %}">
+                        {% if node.icon.file %}
+                            <div class="CategoriesButton-icon">
+                                <img src="{{ node.icon.file.url }}" alt="{{ node.icon.filename }}"/>
+                            </div>
+                        {% endif %}
+                        <span class="CategoriesButton-text">{{ node.title }}</span>
+                    </a>
+                    {% if not node.is_leaf_node %}
+                        <a class="CategoriesButton-arrow" href="#"></a>
+
+                        <div class="CategoriesButton-submenu">
+                            {% for child in node.get_children %}
+                                <a class="CategoriesButton-link" href="{% url 'category' slug=child.slug %}">
+
+                                    {% if node.icon.file %}
+                                        <div class="CategoriesButton-icon">
+                                            <img src="{{ child.icon.file.url }}" alt="{{ child.icon.filename }}"/>
+                                        </div>
+                                    {% endif %}
+                                    <span class="CategoriesButton-text">{{ child.title }}</span>
+                                </a>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endrecursetree %}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static i18n goods_cards filter_catalog %}
+
+
+{% block content %}
+    <div class="Middle Middle_top">
+        {{ block.super }}
+        <div class="Section">
+            <div class="wrap">
+                <h2>{{ text }}</h2>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        setTimeout('location="{% url 'index' %}";', 5000);
+    </script>
+{% endblock %}

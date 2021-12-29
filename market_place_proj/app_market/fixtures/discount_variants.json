@@ -1,0 +1,1 @@
+[{"model": "app_market.discountvariants", "pk": 1, "fields": {"title": "Percent"}}, {"model": "app_market.discountvariants", "pk": 2, "fields": {"title": "Sum"}}, {"model": "app_market.discountvariants", "pk": 4, "fields": {"title": "Fixed"}}]

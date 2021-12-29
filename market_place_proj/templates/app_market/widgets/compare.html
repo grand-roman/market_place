@@ -1,0 +1,9 @@
+{% load static %}
+
+<a class="CartBlock-block" href="{% url 'view_compare' %}">
+    <img class="CartBlock-img" src="{% static 'assets/img/icons/exchange.svg' %}"
+         alt="exchange.svg"/>
+    {% if compare_count > 0 %}
+        <span class="CartBlock-amount">{{ compare_count }}</span>
+    {% endif %}
+</a>

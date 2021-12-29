@@ -1,0 +1,32 @@
+{% load static i18n %}
+
+<div class="Tabs-block" id="sellers">
+    <div class="Categories Categories_product">
+        {% for catalog in good.catalog.all %}
+            <div class="Categories-row">
+
+                <div class="Categories-block Categories-block_info">
+                    <div class="Categories-info">
+                        <strong>{{ catalog.seller }}</strong>
+                    </div>
+                </div>
+                <div class="Categories-splitProps"></div>
+                <div class="Categories-block Categories-price">
+                    <strong>{{ catalog.price }} ₽</strong> ({{ catalog.count }} {% trans 'pc.' %})
+                </div>
+                <div class="Categories-block Categories-button">
+                    <form action="{% url 'good_in_cart' mtd='add_good' good_id=catalog.pk %}" method="POST">
+                        {% csrf_token %}
+                        <button class="btn btn_primary" type="submit">
+                            <img class="btn-icon"
+                                 src="{% static 'assets/img/icons/card/cart_white.svg' %}"
+                                 alt="cart_white"/>
+                            <span class="btn-content">{% trans 'Buy' %}</span>
+
+                        </button>
+                    </form>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

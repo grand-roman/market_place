@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+{% load static i18n goods_cards filter_catalog %}
+
+
+{% block content %}
+	<div class="Middle Middle_top">
+		{{ block.super }}
+		<div class="Section Section_column Section_columnRight Section_columnWide">
+			<div class="wrap">
+				<div class="Section-column">
+					<div class="Section-columnSection Section-columnSection_mark">
+						<div class="media media_advantage">
+							<div class="media-image">
+								<img src="{% static 'assets/img/icons/advantages/shipping.svg' %}" alt="shipping.svg"/>
+							</div>
+							<div class="media-content">
+								<strong class="media-title">{% trans 'Shipping & Returns' %}</strong>
+								<p class="media-text">{% trans 'World wide shipping' %}</p>
+							</div>
+						</div>
+					</div>
+					<div class="Section-columnSection Section-columnSection_mark">
+						<div class="media media_advantage">
+							<div class="media-image"><img src="{% static 'assets/img/icons/advantages/moneyBack.svg' %}"
+							                              alt="moneyBack.svg"/>
+							</div>
+							<div class="media-content">
+								<strong class="media-title">{% trans 'Money Back' %}
+								</strong>
+								<p class="media-text">{% trans 'Guaranted payments' %}
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="Section-columnSection Section-columnSection_mark">
+						<div class="media media_advantage">
+							<div class="media-image"><img src="{% static 'assets/img/icons/advantages/support.svg' %}"
+							                              alt="support.svg"/>
+							</div>
+							<div class="media-content">
+								<strong class="media-title">{% trans 'Support Policy' %}
+								</strong>
+								<p class="media-text">{% trans 'Fast support team' %}
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="Section-columnSection Section-columnSection_mark">
+						<div class="media media_advantage">
+							<div class="media-image"><img src="{% static 'assets/img/icons/advantages/quality.svg' %}"
+							                              alt="quality.svg"/>
+							</div>
+							<div class="media-content">
+								<strong class="media-title">{% trans 'Quality Guarantee' %}
+								</strong>
+								<p class="media-text">{% trans 'Best guaranted items' %}
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="Section-columnSection">
+						<header class="Section-header">
+							<strong class="Section-title">{% trans 'Follow Us' %}
+							</strong>
+						</header>
+						<div class="Section-columnContent">
+							<div class="Footer-payments Footer-payments_column">
+								<div><img src="{% static 'assets/img/icons/socialContent/fb.png' %}" alt="fb.png"/>
+								</div>
+								<div><img src="{% static 'assets/img/icons/socialContent/tw.png' %}" alt="tw.png"/>
+								</div>
+								<div><img src="{% static 'assets/img/icons/socialContent/gg.png' %}" alt="gg.png"/>
+								</div>
+								<div><img src="{% static 'assets/img/icons/socialContent/in.png' %}" alt="in.png"/>
+								</div>
+								<div><img src="{% static 'assets/img/icons/socialContent/pt.png' %}" alt="pt.png"/>
+								</div>
+								<div><img src="{% static 'assets/img/icons/socialContent/ml.png' %}" alt="ml.png"/>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="Section-content">
+					<div class="Map">
+						<script type="text/javascript" charset="utf-8" async
+						        src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Aab0c930ee3de165a0eaa7eab3c5e810a0019bf38d9c3e3b44ca793b8ba10aad9&amp;amp;width=100%25&amp;amp;height=486&amp;amp;lang=ru_RU&amp;amp;scroll=true"></script>
+					</div>
+					<div class="Contacts Contacts_main">
+						<div class="Contacts-block">
+							<div class="media">
+								<div class="media-image"><img src="{% static 'assets/img/icons/contacts/phone.svg' %}"
+								                              alt="phone.svg"/>
+								</div>
+								<div class="media-content">{% trans 'Phone' %}: +8 (200)
+									800-2000-600<br>{% trans 'Mobile' %}: +8 (200) 800-2000-650
+								</div>
+							</div>
+						</div>
+						<div class="Contacts-block">
+							<div class="media">
+								<div class="media-image">
+									<img src="{% static 'assets/img/icons/contacts/address.svg' %}" alt="address.svg"/>
+								</div>
+								<div class="media-content">
+									{% blocktrans %}Russia, Sverdlovsk region, Kamensk-Uralsky, Zavodskoy proezd 1/8{% endblocktrans %}
+								</div>
+							</div>
+						</div>
+						<div class="Contacts-block">
+							<div class="media">
+								<div class="media-image">
+									<img src="{% static 'assets/img/icons/contacts/mail.svg' %}" alt="mail.svg"/>
+								</div>
+								<div class="media-content">{% trans 'General' %}:
+									hello@ninzio.com<br>{% trans 'Editor' %}: editor@ninzio.com
+								</div>
+							</div>
+						</div>
+					</div>
+					<header class="Section-header Section-header_sm">
+						<h2 class="Section-title">{% trans 'Contact Form' %}</h2>
+					</header>
+					<form class="form form_contacts" method="post">
+						{% csrf_token %}
+						<div class="form-group">
+							<div class="row">
+								<div class="row-block">
+									{{ form.name }}
+								</div>
+								<div class="row-block">
+									{{ form.mail }}
+								</div>
+								<div class="row-block">
+									{{ form.website }}
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							{{ form.message }}
+						</div>
+						<div class="form-group">
+							<input class="btn btn_muted form-btn" type="submit" value="{% trans 'Send Message' %}"/>
+						</div>
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

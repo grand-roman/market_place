@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+{% block content %}
+    <div class="Middle Middle_top">
+        <div class="Middle-top">
+            <div class="wrap">
+                <div class="Middle-header">
+                    <h1 class="Middle-title">{% trans 'Sale' %}
+                    </h1>
+                    <ul class="breadcrumbs Middle-breadcrumbs">
+                        <li class="breadcrumbs-item"><a href="index.html">{% trans 'home' %}</a>
+                        </li>
+                        <li class="breadcrumbs-item breadcrumbs-item_current"><span>{% trans 'Sale' %}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="Section">
+            <div class="wrap">
+                <div class="Cards Cards_blog">
+                    {% for discount in discounts %}
+                        <div class="Card">
+                            <a class="Card-picture"  href="{% url 'sale' pk=discount.pk %}"><img
+                                    src="{% static 'assets/img/content/sale/product.png' %}"
+                                    alt="product.png"/></a>
+                            <div class="Card-date">
+                                <strong class="Card-date-number">{{ discount.created_at|date:'d' }}
+                                </strong><span class="Card-date-month">{{ discount.created_at|date:'M' }}</span>
+                            </div>
+                            {% if discount.closed_at %}
+                                <div class="Card-date Card-date_to">
+                                    <strong class="Card-date-number">{{ discount.closed_at|date:'d' }}</strong>
+                                    <span class="Card-date-month">{{ discount.closed_at|date:'M' }}</span>
+                                </div>
+                            {% endif %}
+                            <div class="Card-content">
+                                <strong class="Card-title"><a href="#">{{ discount.title }}</a></strong>
+                                <div class="Card-description">{{ discount.description }}</div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include 'base_part/widgets/pagination.html' with page=page_obj %}
+{% endblock %}

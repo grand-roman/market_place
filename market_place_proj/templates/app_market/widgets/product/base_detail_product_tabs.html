@@ -1,0 +1,24 @@
+{% load static i18n %}
+
+<div class="Tabs Tabs_default">
+    <div class="Tabs-links">
+        <a class="Tabs-link_ACTIVE Tabs-link" href="#description">
+            <span>{% trans 'Description' %}</span>
+        </a>
+        <a class="Tabs-link" href="#sellers">
+            <span>{% trans 'Sellers' %}</span>
+        </a>
+        <a class="Tabs-link" href="#addit">
+            <span>{% trans 'AdditionaL Info' %}</span>
+        </a>
+        <a class="Tabs-link" href="#reviews">
+            <span>{% trans 'Reviews' %} ({{ good.review.count }})</span>
+        </a>
+    </div>
+    <div class="Tabs-wrap">
+        {% include 'app_market/widgets/product/tabs/description_tab.html' %}
+        {% include 'app_market/widgets/product/tabs/sellers_tab.html' %}
+        {% include 'app_market/widgets/product/tabs/addit_tab.html' %}
+        {% include 'app_market/widgets/product/tabs/review_tab.html' %}
+    </div>
+</div>

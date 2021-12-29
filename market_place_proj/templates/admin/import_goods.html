@@ -1,0 +1,16 @@
+{% extends 'admin/base_site.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Import goods" %}{% endblock %}
+
+
+{% block content %}
+    <div class="fieldsets">
+        <form method="post" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p>{% trans "Files with goods" %} {{ form.files }}</p>
+            <p>{% trans "User email for the report" %} {{ form.email }}</p>
+            <button>{% trans "Import" %}</button>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,21 @@
+server {
+    server_name okypok.ru www.okypok.ru;
+    location = /favicon.ico { access_log off; log_not_found off; }
+
+    location /static {
+        autoindex on;
+        alias /home/django/py/megano/python_django_project_diploma/market_place_proj/static;
+    }
+
+    location /media {
+        alias /home/django/py/megano/python_django_project_diploma/market_place_proj/media;           #путь до media катал
+    }
+
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/run/gunicorn.sock;
+    }
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/okypok.ru/fullchain.pem; # managed by
+    ssl_certificate_key /etc/letsencrypt/live/okypok.ru/privkey.pem; # managed b

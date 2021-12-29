@@ -1,0 +1,34 @@
+{% load static %}
+
+{% if page.has_other_pages %}
+	<div class="Pagination">
+		<div class="Pagination-ins">
+			{% if page.has_previous %}
+				<a class="Pagination-element Pagination-element_prev" href="?page=
+											{{ page.previous_page_number }}{{ get_url }}{{ get_page }}">
+					<img alt="prevPagination.svg" src="{% static 'assets/img/icons/prevPagination.svg' %}">
+				</a>
+            {% endif %}
+
+			{% for i in page.paginator.page_range %}
+				{% if page.number == i %}
+					<a class="Pagination-element Pagination-element_current" href="#">
+						<span class="Pagination-text">{{ i }}</span>
+					</a>
+				{% elif i >= page.number|add:-2 and i <= page.number|add:2 %}
+					<a class="Pagination-element" href="?page={{ i }}{{ get_url }}{{ get_page }}">
+						<span class="Pagination-text">{{ i }}</span>
+					</a>
+				{% endif %}
+			{% endfor %}
+
+			{% if page.has_next %}
+				<a class="Pagination-element Pagination-element_prev" href="?page=
+											{{ page.next_page_number }}{{ get_url }}{{ get_page }}">
+					<img alt="nextPagination.svg" src="{% static 'assets/img/icons/nextPagination.svg' %}">
+				</a>
+			{% endif %}
+		</div>
+	</div>
+
+{% endif %}

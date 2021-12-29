@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static i18n goods_views %}
+{% block content %}
+    <div class="Middle Middle_top">
+        <div class="Middle-top">
+            <div class="wrap">
+                <div class="Middle-header">
+                    <h1 class="Middle-title">{% trans 'About Megano' %}
+                    </h1>
+                    <ul class="breadcrumbs Middle-breadcrumbs">
+                        <li class="breadcrumbs-item"><a href="index.html">{% trans 'home' %}</a>
+                        </li>
+                        <li class="breadcrumbs-item breadcrumbs-item_current"><span>{% trans 'About Us' %}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="Section Section_column Section_columnLeft Section_columnWide">
+            <div class="wrap">
+                <div class="Section-column">
+                    {% include 'base_part/tabular.html' %}
+                    {% include 'base_part/contacts.html' %}
+
+                    <div class="Section-columnSection">
+                        <header class="Section-header">
+                            <strong class="Section-title">{% trans 'Follow Us' %}
+                            </strong>
+                        </header>
+                        <div class="Section-columnContent">
+                            <div class="Footer-payments Footer-payments_column">
+                                <div><img src="{% static 'assets/img/icons/socialContent/fb.png' %}" alt="fb.png"/>
+                                </div>
+                                <div><img src="{% static 'assets/img/icons/socialContent/tw.png' %}" alt="tw.png"/>
+                                </div>
+                                <div><img src="{% static 'assets/img/icons/socialContent/gg.png' %}" alt="gg.png"/>
+                                </div>
+                                <div><img src="{% static 'assets/img/icons/socialContent/in.png' %}" alt="in.png"/>
+                                </div>
+                                <div><img src="{% static 'assets/img/icons/socialContent/pt.png' %}" alt="pt.png"/>
+                                </div>
+                                <div><img src="{% static 'assets/img/icons/socialContent/ml.png' %}" alt="ml.png"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="Section-content">
+                    <div class="row row_verticalCenter row_maxHalf">
+                        <div class="row-block">
+                            <div class="pict"><img src="{% static 'assets/img/content/home/bigGoods.png' %}"
+                                                   alt="bigGoods.png"/>
+                            </div>
+                        </div>
+                        <div class="row-block">
+                            <h2>{% trans 'Megano Store Hystory' %}
+                            </h2>
+                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit doli. Aenean commodo ligula eget
+                                dolor. Aenean massa. Cumtipsu sociis natoque penatibus et magnis dis parturient
+                                montesti, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eutu,
+                                pretiumem.
+                            </p>
+                            <ul>
+                                <li>Lorem ipsum dolor sit amet, consectetuer
+                                </li>
+                                <li>adipiscing elit doli. Aenean commodo ligula
+                                </li>
+                                <li>eget dolor. Aenean massa. Cumtipsu sociis
+                                </li>
+                                <li>natoque penatibus et magnis dis parturient
+                                </li>
+                                <li>montesti, nascetur ridiculus mus. Donec
+                                </li>
+                                <li>quam felis, ultricies nec, pellentesque eutu
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    {% shop_cards 8 %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

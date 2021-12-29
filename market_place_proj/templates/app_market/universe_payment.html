@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+
+{% block content %}
+    {% if messages %}
+        {% for message in messages %}
+            <h1>{{ message }}</h1>
+        {% endfor %}
+    {% endif %}
+    <div class="Middle Middle_top">
+        <div class="Middle-top">
+            <div class="wrap">
+                <div class="Middle-header">
+                    <h1 class="Middle-title">{% trans 'Payment' %}
+                    </h1>
+                    <ul class="breadcrumbs Middle-breadcrumbs">
+                        <li class="breadcrumbs-item"><a href="index.html">{% trans 'home' %}</a>
+                        </li>
+                        <li class="breadcrumbs-item breadcrumbs-item_current"><span>{% trans 'payment' %}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="Section">
+            <div class="wrap">
+                {{ form.errors }}
+                {% if form.pay_method.value == 'someone' %}
+                    {% include 'app_market/pay_parts/someone.html' %}
+                {% elif form.pay_method.value == 'online' %}
+                    {% include 'app_market/pay_parts/online.html' %}
+                {% else %}
+                    <h1>{% trans 'no orders for payment' %}</h1>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

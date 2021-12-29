@@ -1,0 +1,18 @@
+{% load static i18n %}
+
+<div class="Sort">
+	<div class="Sort-title">{% trans 'Sort by: ' %}
+	</div>
+	<div class="Sort-variants">
+		{% with res=request.session.sorted %}
+			<a class="Sort-sortBy {% if res == 'popular' %}Sort-sortBy_dec{% elif res == 'rev_popular' %}Sort-sortBy_inc{% else %}{% endif %}" href="
+					{{ get_page }}{{ get_sort.popular }}">{% trans 'Popularity' %}</a>
+			<a class="Sort-sortBy {% if res == 'price' %}Sort-sortBy_dec{% elif res == 'rev_price' %}Sort-sortBy_inc{% else %}{% endif %}" href="
+					{{ get_page }}{{ get_sort.price }}">{% trans 'Price' %}</a>
+			<a class="Sort-sortBy {% if res == 'review' %}Sort-sortBy_dec{% elif res == 'rev_review' %}Sort-sortBy_inc{% else %}{% endif %}" href="
+					{{ get_page }}{{ get_sort.review }}">{% trans 'Reviews' %}</a>
+			<a class="Sort-sortBy {% if res == 'new' %}Sort-sortBy_dec{% elif res == 'rev_new' %}Sort-sortBy_inc{% else %}{% endif %}" href="
+					{{ get_page }}{{ get_sort.new }}"> {% trans 'Novelty' %}</a>
+		{% endwith %}
+	</div>
+</div>

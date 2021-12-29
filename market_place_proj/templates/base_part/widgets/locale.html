@@ -1,0 +1,20 @@
+{% load i18n static %}
+
+{% get_current_language as LANGUAGE_CODE %}
+{% get_language_info for LANGUAGE_CODE as lang %}
+{% get_available_languages as LANGUAGES %}
+{% get_language_info_list for LANGUAGES as languages %}
+
+<div class="Languages">
+    {% for language in languages %}
+        <a href="{% url 'locale' lang=language.code %}?next={{ request.get_full_path }}" class="LanguagesLink">
+            {% with 'assets/img/flags/'|add:language.code|add:'.png' as image_path %}
+                <img src="{% static image_path %}" width="20" height="20" alt="{{ language.name }} flag"/>
+
+                {% if language.code == LANGUAGE_CODE %}
+                    <div class="LanguagesLink-current"></div>
+                {% endif %}
+            {% endwith %}
+        </a>
+    {% endfor %}
+</div>

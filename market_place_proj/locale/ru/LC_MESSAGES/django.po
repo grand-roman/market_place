@@ -1,0 +1,1696 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-25 16:41+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%"
+"100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: .\admin_extension\apps.py:8
+msgid "Аdmin extension"
+msgstr "Админ настройки"
+
+#: .\app_market\admin.py:137
+#: .\templates\app_market\widgets\category\sorted_category.html:11
+msgid "Price"
+msgstr "Цена"
+
+#: .\app_market\admin.py:142
+msgid "to 1000"
+msgstr "до 1000"
+
+#: .\app_market\admin.py:143
+msgid "from 1000 to 10000"
+msgstr "от 1000 до 10000"
+
+#: .\app_market\admin.py:144
+msgid "from 10000 to 50000"
+msgstr "от 10000 до 50000"
+
+#: .\app_market\admin.py:145
+msgid "from 50000"
+msgstr "от 50000"
+
+#: .\app_market\apps.py:8
+msgid "Аpp market"
+msgstr "Маркет"
+
+#: .\app_market\forms.py:16
+msgid "Product id in the cart"
+msgstr "Идентификатор товара в корзине"
+
+#: .\app_market\forms.py:17
+msgid "Product id"
+msgstr "Продукт"
+
+#: .\app_market\forms.py:18
+msgid "Category Id"
+msgstr "Идентификатор категории"
+
+#: .\app_market\forms.py:19
+msgid "the index of the form in the array"
+msgstr "индекс формы в массиве"
+
+#: .\app_market\forms.py:20
+msgid "Picture"
+msgstr "Картинка"
+
+#: .\app_market\forms.py:21
+#: .\templates\app_market\widgets\category\filter_category.html:20
+msgid "Product name"
+msgstr "название продукта"
+
+#: .\app_market\forms.py:22
+msgid "Product price"
+msgstr "Цена товара"
+
+#: .\app_market\forms.py:23
+msgid "Product discount"
+msgstr "Цена со скидкой"
+
+#: .\app_market\forms.py:24
+msgid "Price for the whole product"
+msgstr "Цена за весь товар"
+
+#: .\app_market\forms.py:25
+msgid "The price for the whole product is discounted"
+msgstr "Цена на весь товар со скидкой."
+
+#: .\app_market\forms.py:26 .\app_market\models.py:168
+msgid "Discount"
+msgstr "Скидка"
+
+#: .\app_market\forms.py:56 .\app_users\forms.py:20 .\app_users\forms.py:77
+#: .\app_users\models.py:23 .\templates\app_market\order.html:213
+#: .\templates\app_users\oneorder.html:32
+msgid "Full name"
+msgstr "ФИО"
+
+#: .\app_market\forms.py:62 .\app_users\forms.py:33 .\app_users\forms.py:84
+#: .\app_users\models.py:25 .\templates\app_market\contacts.html:95
+#: .\templates\app_users\oneorder.html:36
+#: .\templates\base_part\contacts.html:7 .\templates\base_part\footer.html:89
+msgid "Phone"
+msgstr "Телефон"
+
+#: .\app_market\forms.py:65
+msgid "E-mail"
+msgstr "Эл. Почта"
+
+#: .\app_market\forms.py:69 .\app_users\forms.py:36 .\app_users\forms.py:87
+#: .\app_users\forms.py:140
+msgid "Password"
+msgstr "Пароль"
+
+#: .\app_market\forms.py:71
+msgid "password"
+msgstr "Пароль"
+
+#: .\app_market\forms.py:72 .\app_users\forms.py:42 .\app_users\forms.py:94
+msgid "Confirm password"
+msgstr "Подтверждение пароля"
+
+#: .\app_market\forms.py:74
+msgid "confirm password"
+msgstr "Подтверждение пароля"
+
+#: .\app_market\forms.py:88 .\app_market\forms.py:103 .\app_users\forms.py:122
+msgid "A user with such an email has already been registered"
+msgstr "Пользователь с таким адресом электронной почты уже зарегистрирован"
+
+#: .\app_market\forms.py:105 .\app_users\forms.py:124
+msgid "Required field."
+msgstr "Обязательное поле."
+
+#: .\app_market\forms.py:107 .\app_users\forms.py:126
+msgid "Enter the phone number correctly."
+msgstr "Введите номер телефона правильно"
+
+#: .\app_market\forms.py:129
+msgid "name"
+msgstr "имя"
+
+#: .\app_market\forms.py:130 .\app_market\models.py:592
+msgid "Name"
+msgstr "Имя"
+
+#: .\app_market\forms.py:131
+msgid "email"
+msgstr "Эл. Почта"
+
+#: .\app_market\forms.py:132 .\app_market\models.py:593
+#: .\templates\app_users\oneorder.html:40 .\templates\base_part\footer.html:89
+msgid "Email"
+msgstr "Эл. Почта"
+
+#: .\app_market\forms.py:133
+msgid "website"
+msgstr "Веб-сайт"
+
+#: .\app_market\forms.py:134 .\app_market\models.py:594
+msgid "Website"
+msgstr "Веб-сайт"
+
+#: .\app_market\forms.py:135
+msgid "message"
+msgstr "сообщение"
+
+#: .\app_market\forms.py:136 .\app_market\models.py:595
+#: .\app_market\models.py:599
+msgid "Message"
+msgstr "Сообщение"
+
+#: .\app_market\models.py:93
+msgid "seller name"
+msgstr "имя продавца"
+
+#: .\app_market\models.py:94
+msgid "story"
+msgstr "описание"
+
+#: .\app_market\models.py:95 .\app_market\models.py:345
+#: .\app_market\models.py:412
+msgid "delivery"
+msgstr "доставка"
+
+#: .\app_market\models.py:96
+msgid "money"
+msgstr "деньги"
+
+#: .\app_market\models.py:97
+msgid "support"
+msgstr "служба поддержки"
+
+#: .\app_market\models.py:98
+msgid "quality"
+msgstr "количество"
+
+#: .\app_market\models.py:99
+msgid "phone"
+msgstr "Телефон"
+
+#: .\app_market\models.py:100
+msgid "address"
+msgstr "адрес"
+
+#: .\app_market\models.py:101 .\app_market\models.py:107
+msgid "mail"
+msgstr "эл. почта"
+
+#: .\app_market\models.py:102
+msgid "FaceBook"
+msgstr "Фейсбук"
+
+#: .\app_market\models.py:103
+msgid "Twitter"
+msgstr "Твиттер"
+
+#: .\app_market\models.py:104
+msgid "Google+"
+msgstr "Гугл+"
+
+#: .\app_market\models.py:105
+msgid "In"
+msgstr ""
+
+#: .\app_market\models.py:106
+msgid "Pt"
+msgstr ""
+
+#: .\app_market\models.py:108
+msgid "icon"
+msgstr "иконка"
+
+#: .\app_market\models.py:114 .\app_market\models.py:337
+msgid "seller"
+msgstr "Продавец"
+
+#: .\app_market\models.py:115
+msgid "sellers"
+msgstr "Продавцы"
+
+#: .\app_market\models.py:122
+msgid "product group for discount"
+msgstr "группа товаров для скидки"
+
+#: .\app_market\models.py:123
+msgid "product group code for the discount"
+msgstr "группы товаров для скидок"
+
+#: .\app_market\models.py:129 .\app_market\models.py:234
+msgid "group of products for discount"
+msgstr "группа товаров со скидкой"
+
+#: .\app_market\models.py:130
+msgid "groups of products for discounts"
+msgstr "группы товаров со скидками"
+
+#: .\app_market\models.py:140 .\app_market\models.py:146
+msgid "discount option"
+msgstr "вариант скидки"
+
+#: .\app_market\models.py:147
+msgid "Discount options"
+msgstr "Варианты скидок"
+
+#: .\app_market\models.py:154
+msgid "name of the discount"
+msgstr "название скидки"
+
+#: .\app_market\models.py:155
+msgid "time of discount creation"
+msgstr "time of discount creation"
+
+#: .\app_market\models.py:156
+msgid "discount completion time"
+msgstr "время завершения скидки"
+
+#: .\app_market\models.py:157
+msgid "discount amount"
+msgstr "сумма скидки"
+
+#: .\app_market\models.py:158
+msgid "discount weight"
+msgstr "вес скидки"
+
+#: .\app_market\models.py:160
+msgid "discount options"
+msgstr "варианты скидок"
+
+#: .\app_market\models.py:161
+msgid "discount activated"
+msgstr "активация скидки"
+
+#: .\app_market\models.py:162
+msgid "discount removed"
+msgstr "скидка удалена"
+
+#: .\app_market\models.py:169
+msgid "Discounts"
+msgstr "Скидки"
+
+#: .\app_market\models.py:176
+msgid "tag"
+msgstr "тэг"
+
+#: .\app_market\models.py:188
+msgid "product category name"
+msgstr "название категории продукта"
+
+#: .\app_market\models.py:189
+msgid "product category code"
+msgstr "код категории продукта"
+
+#: .\app_market\models.py:191
+msgid "category removed"
+msgstr "категория удалена"
+
+#: .\app_market\models.py:193 .\app_market\models.py:247
+#: .\app_market\models.py:343 .\app_market\models.py:386
+#: .\app_market\models.py:428 .\app_market\models.py:479
+#: .\app_market\models.py:578 .\app_market\models.py:588
+msgid "discount"
+msgstr "скидка"
+
+#: .\app_market\models.py:194
+msgid "slug"
+msgstr "слаг"
+
+#: .\app_market\models.py:196 .\app_market\models.py:243
+msgid "related files"
+msgstr "связанные файлы"
+
+#: .\app_market\models.py:197
+msgid "best"
+msgstr "лучший"
+
+#: .\app_market\models.py:204 .\app_market\models.py:236
+msgid "Product category"
+msgstr "Категория продукта"
+
+#: .\app_market\models.py:205
+msgid "Product categories"
+msgstr "Категории продуктов"
+
+#: .\app_market\models.py:213
+msgid "file description"
+msgstr "описание файла"
+
+#: .\app_market\models.py:215
+msgid "file name"
+msgstr "имя файла"
+
+#: .\app_market\models.py:216 .\app_market\models.py:223
+msgid "File"
+msgstr "Файл"
+
+#: .\app_market\models.py:217
+msgid "link"
+msgstr "ссылка"
+
+#: .\app_market\models.py:224
+msgid "Files"
+msgstr "Файлы"
+
+#: .\app_market\models.py:228
+msgid "good name"
+msgstr "имя товара"
+
+#: .\app_market\models.py:229
+msgid "good maker"
+msgstr "производитель товара"
+
+#: .\app_market\models.py:230
+msgid "good model"
+msgstr "модель довара"
+
+#: .\app_market\models.py:231
+msgid "type of goods"
+msgstr "тип товара"
+
+#: .\app_market\models.py:232
+msgid "product description"
+msgstr "описание товара"
+
+#: .\app_market\models.py:237
+msgid "special offer"
+msgstr "специальное предложение"
+
+#: .\app_market\models.py:241
+msgid "image for good"
+msgstr "изображение товара"
+
+#: .\app_market\models.py:244 .\app_market\models.py:481
+msgid "the product has been removed"
+msgstr "товар был удален"
+
+#: .\app_market\models.py:248
+msgid "the number of product views"
+msgstr "количество просмотров товара"
+
+#: .\app_market\models.py:249
+msgid "product creation date"
+msgstr "дата создания продукта"
+
+#: .\app_market\models.py:250
+msgid "Tags"
+msgstr "Тэги"
+
+#: .\app_market\models.py:256
+msgid "Product"
+msgstr "Товар"
+
+#: .\app_market\models.py:257
+msgid "Products"
+msgstr "Товары"
+
+#: .\app_market\models.py:265 .\app_market\models.py:382
+msgid "good"
+msgstr "товар"
+
+#: .\app_market\models.py:268 .\app_market\models.py:279
+#: .\app_market\models.py:366 .\app_market\models.py:410
+msgid "user"
+msgstr "пользователь"
+
+#: .\app_market\models.py:270
+msgid "updated at"
+msgstr "обновлено"
+
+#: .\app_market\models.py:271
+msgid "created at"
+msgstr "создано"
+
+#: .\app_market\models.py:282
+msgid "product connection"
+msgstr "товар"
+
+#: .\app_market\models.py:284
+msgid "Review text"
+msgstr "Отзыв"
+
+#: .\app_market\models.py:285
+msgid "time of writing the review"
+msgstr "время написания отзыва"
+
+#: .\app_market\models.py:286
+msgid "review deleted"
+msgstr "отзыв удален"
+
+#: .\app_market\models.py:292
+msgid "Product Review"
+msgstr "Отзыв о товаре"
+
+#: .\app_market\models.py:293
+msgid "Product Reviews"
+msgstr "Отзывы о товарах"
+
+#: .\app_market\models.py:300
+msgid "delivery name"
+msgstr "название доставки"
+
+#: .\app_market\models.py:301 .\app_market\models.py:422
+msgid "shipping cost"
+msgstr "стоимость доставки"
+
+#: .\app_market\models.py:302
+msgid "delivery clearance time"
+msgstr "delivery clearance time"
+
+#: .\app_market\models.py:303
+msgid "delivery completion time"
+msgstr "время завершения доставки"
+
+#: .\app_market\models.py:309 .\app_market\models.py:310
+#: .\templates\base_part\footer.html:56
+msgid "Delivery"
+msgstr "Доставка"
+
+#: .\app_market\models.py:318 .\app_market\models.py:462
+#: .\app_market\models.py:469
+msgid "order"
+msgstr "заказ"
+
+#: .\app_market\models.py:319 .\app_market\models.py:424
+msgid "payment status"
+msgstr "статус оплаты"
+
+#: .\app_market\models.py:320
+msgid "payment card"
+msgstr "оплата картой"
+
+#: .\app_market\models.py:321
+msgid "payment time"
+msgstr "время оплаты"
+
+#: .\app_market\models.py:322
+msgid "updated"
+msgstr "обновлено"
+
+#: .\app_market\models.py:328 .\templates\app_market\order.html:241
+#: .\templates\app_market\universe_payment.html:15
+#: .\templates\app_users\historyorder.html:39
+#: .\templates\app_users\oneorder.html:65
+msgid "Payment"
+msgstr "Оплата"
+
+#: .\app_market\models.py:329
+msgid "Payments"
+msgstr "Платежи"
+
+#: .\app_market\models.py:336
+msgid "product"
+msgstr "продукт"
+
+#: .\app_market\models.py:338 .\templates\app_market\compare.html:154
+msgid "price"
+msgstr "цена"
+
+#: .\app_market\models.py:339 .\app_market\models.py:585
+msgid "quantity"
+msgstr "количество"
+
+#: .\app_market\models.py:340
+msgid "number of views"
+msgstr "количество просмотров"
+
+#: .\app_market\models.py:341
+msgid "soft delete"
+msgstr "мягкое удаление"
+
+#: .\app_market\models.py:344
+msgid "popularity"
+msgstr "популярность"
+
+#: .\app_market\models.py:348
+msgid "date of creation of the catalog"
+msgstr "дата создания каталога"
+
+#: .\app_market\models.py:354 .\app_market\models.py:355
+msgid "The sellers product catalog"
+msgstr "Каталог товаров продавцов"
+
+#: .\app_market\models.py:369
+msgid "anonymous ID"
+msgstr "идентификатор анонимного пользователя"
+
+#: .\app_market\models.py:383 .\app_market\models.py:476
+msgid "quantity of goods"
+msgstr "количество твоаров"
+
+#: .\app_market\models.py:387
+msgid "deleted"
+msgstr "удалено"
+
+#: .\app_market\models.py:390
+msgid "good in cart"
+msgstr "товар в корзине"
+
+#: .\app_market\models.py:391
+msgid "goods in cart"
+msgstr "товары в корзине"
+
+#: .\app_market\models.py:402
+msgid "ordinary"
+msgstr "заказ"
+
+#: .\app_market\models.py:402
+msgid "Ordinary"
+msgstr "Обычная"
+
+#: .\app_market\models.py:403
+msgid "express delivery"
+msgstr "Экспресс-доставка"
+
+#: .\app_market\models.py:403 .\templates\app_market\order.html:153
+#: .\templates\app_users\historyorder.html:34
+#: .\templates\app_users\oneorder.html:52
+msgid "Express delivery"
+msgstr "Экспресс-доставка"
+
+#: .\app_market\models.py:406
+msgid "online"
+msgstr "онлайн"
+
+#: .\app_market\models.py:407
+msgid "someone"
+msgstr "при получении"
+
+#: .\app_market\models.py:413
+msgid "city"
+msgstr "город"
+
+#: .\app_market\models.py:414
+msgid "delivery address"
+msgstr "адрес доставки"
+
+#: .\app_market\models.py:415
+msgid "order description"
+msgstr "описание заказа"
+
+#: .\app_market\models.py:416
+msgid "pay method"
+msgstr "метод оплаты"
+
+#: .\app_market\models.py:417
+msgid "order finish"
+msgstr "заказ завершен"
+
+#: .\app_market\models.py:418
+msgid "order creation time"
+msgstr "время создания заказа"
+
+#: .\app_market\models.py:419
+msgid "order completion time"
+msgstr "время выполнения заказа"
+
+#: .\app_market\models.py:423
+msgid "order deleted"
+msgstr "заказ удален"
+
+#: .\app_market\models.py:425
+msgid "payment response"
+msgstr "платежный ответ"
+
+#: .\app_market\models.py:440 .\templates\app_users\historyorder.html:21
+msgid "Order"
+msgstr "Заказ"
+
+#: .\app_market\models.py:441
+msgid "Orders"
+msgstr "История заказов"
+
+#: .\app_market\models.py:474 .\templates\app_market\cart.html:8
+#: .\templates\app_market\cart.html:13
+msgid "Cart"
+msgstr "Корзина"
+
+#: .\app_market\models.py:475
+msgid "product price"
+msgstr "цена товара"
+
+#: .\app_market\models.py:487 .\app_market\models.py:488
+msgid "Order Details"
+msgstr "Детали заказа"
+
+#: .\app_market\models.py:503
+msgid "Title"
+msgstr "Наименование"
+
+#: .\app_market\models.py:504
+msgid "Content"
+msgstr "Контакты"
+
+#: .\app_market\models.py:505
+msgid "Link"
+msgstr "Ссылка"
+
+#: .\app_market\models.py:506
+msgid "Image"
+msgstr "Изображение"
+
+#: .\app_market\models.py:507
+msgid "Image_link"
+msgstr "Ссылка картинки"
+
+#: .\app_market\models.py:508
+msgid "Activity"
+msgstr "Активность"
+
+#: .\app_market\models.py:509
+msgid "Sort"
+msgstr "Сортировка"
+
+#: .\app_market\models.py:517
+msgid "Stock"
+msgstr "Акции"
+
+#: .\app_market\models.py:518
+msgid "Stocks"
+msgstr "Акции"
+
+#: .\app_market\models.py:574
+msgid "Product category 1"
+msgstr "Категория продукта 1"
+
+#: .\app_market\models.py:576
+msgid "Product category 2"
+msgstr "Категория продукта 1"
+
+#: .\app_market\models.py:586
+msgid "total_price"
+msgstr "итоговая цена"
+
+#: .\app_market\models.py:596
+msgid "Message creation time"
+msgstr "Время создания сообщения"
+
+#: .\app_market\models.py:600
+msgid "Messages"
+msgstr "Сообщения"
+
+#: .\app_market\views.py:80 .\app_market\views.py:136
+#: .\app_market\views.py:761
+msgid "Catalog"
+msgstr "Каталог"
+
+#: .\app_market\views.py:377
+msgid "Let there be at least 1 product"
+msgstr "Пусть будет хотя бы 1 товар"
+
+#: .\app_market\views.py:447 .\templates\app_users\widgets\navigation.html:23
+msgid "Browsing history"
+msgstr "История просмотров"
+
+#: .\app_market\views.py:648
+msgid "order payment success"
+msgstr "успешная оплата заказа"
+
+#: .\app_market\views.py:653
+msgid "order payment error"
+msgstr "ошибка оплаты заказа"
+
+#: .\app_market\views.py:664
+msgid "Order history"
+msgstr "История заказов"
+
+#: .\app_market\views.py:682 .\templates\app_users\widgets\navigation.html:20
+msgid "Orders history"
+msgstr "История заказов"
+
+#: .\app_market\views.py:730 .\templates\base_part\footer.html:87
+#: .\templates\base_part\header.html:101
+msgid "Contacts"
+msgstr "Контакты"
+
+#: .\app_market\views.py:747
+msgid "The message has been sent successfully!"
+msgstr "Сообщение успешно отправлено!"
+
+#: .\app_pay_api\views.py:22
+msgid "We not like number 0"
+msgstr "Нам не подходит цифра 0"
+
+#: .\app_pay_api\views.py:23
+msgid "You have not money"
+msgstr "У вас нет средств"
+
+#: .\app_pay_api\views.py:24
+msgid "Problem on the Sun"
+msgstr "Вспышки на Солнце"
+
+#: .\app_pay_api\views.py:25
+msgid "Account block"
+msgstr "Счёт заблокирован"
+
+#: .\app_pay_api\views.py:26
+#, fuzzy
+#| msgid "Account"
+msgid "Account arrested"
+msgstr "Счёт арестован"
+
+#: .\app_pay_api\views.py:27
+msgid "Account does not exist"
+msgstr "Счет не существует"
+
+#: .\app_users\apps.py:8
+msgid "Data of user"
+msgstr "Данные о пользователе"
+
+#: .\app_users\apps.py:9
+msgid "Data of users"
+msgstr "Данные о пользователях"
+
+#: .\app_users\forms.py:14 .\app_users\forms.py:134
+msgid "Username"
+msgstr "Логин"
+
+#: .\app_users\forms.py:64
+msgid "User with this number is already registered."
+msgstr "Пользователь с таким номером уже зарегистрирован"
+
+#: .\app_users\forms.py:67
+msgid "Obligatory field."
+msgstr "Обязательное поле"
+
+#: .\app_users\forms.py:69
+msgid "Enter your phone number correctly."
+msgstr "Введите корректный номер телефона"
+
+#: .\app_users\forms.py:153
+msgid "Invalid login or password"
+msgstr "Не верный логин или пароль"
+
+#: .\app_users\models.py:28
+msgid "Email is verified"
+msgstr "Email верифицирован"
+
+#: .\app_users\models.py:30
+msgid "Avatar"
+msgstr "Аватар"
+
+#: .\app_users\models.py:33 .\templates\app_market\order.html:278
+#: .\templates\app_market\widgets\category\filter_category.html:24
+#: .\templates\app_users\oneorder.html:127
+msgid "Seller"
+msgstr "Продавец"
+
+#: .\app_users\models.py:37
+msgid "User"
+msgstr "Пользователь"
+
+#: .\app_users\models.py:38
+msgid "Users"
+msgstr "Пользователи"
+
+#: .\app_users\views.py:68 .\templates\app_market\order.html:346
+#: .\templates\app_users\signup.html:44 .\templates\base_part\header.html:59
+#: .\templates\registration\login.html:4
+#: .\templates\registration\login.html:39
+#: .\templates\registration\password_reset_complete.html:18
+msgid "Log in"
+msgstr "Войти"
+
+#: .\app_users\views.py:72 .\templates\app_users\widgets\navigation.html:26
+#: .\templates\registration\logged_out.html:4
+msgid "Log out"
+msgstr "Выйти"
+
+#: .\app_users\views.py:76 .\app_users\views.py:80
+#: .\templates\registration\password_change_done.html:4
+#: .\templates\registration\password_change_form.html:4
+msgid "Password change"
+msgstr "Изменение пароля"
+
+#: .\app_users\views.py:84 .\app_users\views.py:96
+#: .\templates\registration\password_reset_complete.html:4
+#: .\templates\registration\password_reset_done.html:4
+#: .\templates\registration\password_reset_form.html:4
+msgid "Password reset"
+msgstr "Сброс пароля"
+
+#: .\app_users\views.py:88 .\app_users\views.py:92
+#: .\templates\registration\password_reset_confirm.html:4
+msgid "Password reset confirmation"
+msgstr "Подтверждение сброса пароля"
+
+#: .\app_users\views.py:103 .\templates\app_users\signup.html:4
+#: .\templates\app_users\signup.html:39
+msgid "Sign up"
+msgstr "Зарегистрироваться"
+
+#: .\app_users\views.py:123 .\templates\base_part\header.html:80
+msgid "Home"
+msgstr "Главная"
+
+#: .\app_users\views.py:125 .\templates\app_users\account.html:4
+#: .\templates\app_users\widgets\navigation.html:14
+#: .\templates\base_part\header.html:57
+msgid "Account"
+msgstr "Аккаунт"
+
+#: .\app_users\views.py:141 .\templates\app_market\viewed_good_list.html:4
+#: .\templates\app_users\profile.html:4
+#: .\templates\app_users\widgets\navigation.html:17
+msgid "Profile"
+msgstr "Профиль"
+
+#: .\templates\admin\admin_settings.html:4 .\templates\admin\index.html:7
+msgid "Settings"
+msgstr "Настройки"
+
+#: .\templates\admin\admin_settings.html:9
+msgid "Admin panel settings page"
+msgstr "Страница настроек панели администратора"
+
+#: .\templates\admin\admin_settings.html:12
+msgid "Here You can reset the cache of the full site or part site"
+msgstr "Здесь Вы можете сбросить кеш полностью или частично."
+
+#: .\templates\admin\admin_settings.html:14
+msgid "Full cache reset"
+msgstr "Полный сброс кеша"
+
+#: .\templates\admin\admin_settings.html:17
+#: .\templates\admin\admin_settings.html:23
+#: .\templates\admin\admin_settings.html:29
+#: .\templates\admin\admin_settings.html:35
+#: .\templates\admin\admin_settings.html:41
+#: .\templates\admin\admin_settings.html:47
+msgid "Reset"
+msgstr "Сброс"
+
+#: .\templates\admin\admin_settings.html:20
+msgid "Cache main page"
+msgstr "Кэш главной страницы"
+
+#: .\templates\admin\admin_settings.html:26
+msgid "Cache category"
+msgstr "Кэш категорий"
+
+#: .\templates\admin\admin_settings.html:32
+msgid "Cache goods"
+msgstr "Кэш товаров"
+
+#: .\templates\admin\admin_settings.html:38
+msgid "Cache orders"
+msgstr "Кэш заказов"
+
+#: .\templates\admin\admin_settings.html:44
+msgid "Cache discount"
+msgstr "Кэш скидок"
+
+#: .\templates\admin\import_goods.html:4 .\templates\admin\index.html:9
+msgid "Import goods"
+msgstr "Импорт товаров"
+
+#: .\templates\admin\import_goods.html:11
+msgid "Files with goods"
+msgstr "Файлы с товарами"
+
+#: .\templates\admin\import_goods.html:12
+msgid "User email for the report"
+msgstr "Электронная почта пользователя для отчета"
+
+#: .\templates\admin\import_goods.html:13
+msgid "Import"
+msgstr "Импортировать"
+
+#: .\templates\app_market\cart.html:11 .\templates\app_market\compare.html:11
+#: .\templates\app_market\order.html:13
+#: .\templates\app_market\progressPayment.html:14
+#: .\templates\app_market\sale.html:11
+#: .\templates\app_market\sale_list.html:11
+#: .\templates\app_market\seller_detail.html:11
+#: .\templates\app_market\seller_list.html:11
+#: .\templates\app_market\shop.html:11
+#: .\templates\app_market\universe_payment.html:18
+msgid "home"
+msgstr "главная"
+
+#: .\templates\app_market\cart.html:126
+msgid "total"
+msgstr "всего"
+
+#: .\templates\app_market\cart.html:128 .\templates\app_market\cart.html:129
+#: .\templates\app_market\cart.html:131
+#: .\templates\app_market\compare.html:163
+#: .\templates\app_market\compare.html:165
+#: .\templates\app_market\compare.html:168
+#: .\templates\app_users\oneorder.html:141
+msgid "₽"
+msgstr ""
+
+#: .\templates\app_market\cart.html:134
+msgid "A discount on the shopping cart has been applied"
+msgstr "Была применена скидка в корзине покупок"
+
+#: .\templates\app_market\cart.html:140
+msgid "Place an order"
+msgstr "Сделать заказ"
+
+#: .\templates\app_market\cart.html:145
+msgid "Your shopping cart is empty :("
+msgstr "Ваша корзина пуста"
+
+#: .\templates\app_market\compare.html:8
+#: .\templates\app_market\compare.html:14
+msgid "Comparison of products"
+msgstr "Сравнение товаров"
+
+#: .\templates\app_market\compare.html:23
+#: .\templates\app_market\compare.html:177
+msgid "Not enough data to compare"
+msgstr "Недостаточно данных для сравнения"
+
+#: .\templates\app_market\compare.html:33
+#: .\templates\app_market\compare.html:187
+msgid "Delete Comparisons"
+msgstr "Удалить сравнения"
+
+#: .\templates\app_market\compare.html:43
+msgid "only differing characteristics"
+msgstr "только разные характеристики"
+
+#: .\templates\app_market\compare.html:108
+msgid "rating"
+msgstr "рейтинг"
+
+#: .\templates\app_market\contacts.html:17
+#: .\templates\app_market\seller_detail.html:28
+#: .\templates\base_part\tabular.html:9
+msgid "Shipping & Returns"
+msgstr "Доставка и возврат"
+
+#: .\templates\app_market\contacts.html:18
+#: .\templates\base_part\tabular.html:10
+msgid "World wide shipping"
+msgstr "Доставка по всему миру"
+
+#: .\templates\app_market\contacts.html:28
+#: .\templates\base_part\tabular.html:20
+msgid "Money Back"
+msgstr "Возврат денег"
+
+#: .\templates\app_market\contacts.html:30
+#: .\templates\base_part\tabular.html:22
+msgid "Guaranted payments"
+msgstr "Гарантированные выплаты"
+
+#: .\templates\app_market\contacts.html:41
+#: .\templates\app_market\seller_detail.html:53
+#: .\templates\base_part\tabular.html:33
+msgid "Support Policy"
+msgstr "Политика поддержки"
+
+#: .\templates\app_market\contacts.html:43
+#: .\templates\base_part\tabular.html:35
+msgid "Fast support team"
+msgstr "Команда быстрой поддержки"
+
+#: .\templates\app_market\contacts.html:54
+#: .\templates\app_market\seller_detail.html:65
+#: .\templates\base_part\tabular.html:46
+msgid "Quality Guarantee"
+msgstr "Гарантия качества"
+
+#: .\templates\app_market\contacts.html:56
+#: .\templates\base_part\tabular.html:48
+msgid "Best guaranted items"
+msgstr "Лучшие товары с гарантией"
+
+#: .\templates\app_market\contacts.html:63
+#: .\templates\app_market\seller_detail.html:105
+#: .\templates\app_market\seller_list.html:26
+#: .\templates\app_market\shop.html:27 .\templates\base_part\header.html:19
+msgid "Follow Us"
+msgstr "Следите за нами"
+
+#: .\templates\app_market\contacts.html:96
+#: .\templates\base_part\contacts.html:9
+msgid "Mobile"
+msgstr "Телефон"
+
+#: .\templates\app_market\contacts.html:106
+msgid "Russia, Sverdlovsk region, Kamensk-Uralsky, Zavodskoy proezd 1/8"
+msgstr ""
+"Россия, Свердловская область, Каменск-Уральский, Заводской проезд, 1, "
+"Заводской проезд 1/8"
+
+#: .\templates\app_market\contacts.html:115
+#: .\templates\base_part\contacts.html:29
+msgid "General"
+msgstr "Главный"
+
+#: .\templates\app_market\contacts.html:116
+#: .\templates\base_part\contacts.html:29
+msgid "Editor"
+msgstr "Редактор"
+
+#: .\templates\app_market\contacts.html:122
+msgid "Contact Form"
+msgstr "Обратная связь"
+
+#: .\templates\app_market\contacts.html:143
+msgid "Send Message"
+msgstr "Отправить сообщение"
+
+#: .\templates\app_market\order.html:10 .\templates\app_market\order.html:16
+msgid "Making an order"
+msgstr "Оформление заказа"
+
+#: .\templates\app_market\order.html:27
+msgid "Filling progress"
+msgstr "Ход заполнения"
+
+#: .\templates\app_market\order.html:32 .\templates\app_market\order.html:52
+msgid "Step 1. User Parameters"
+msgstr "Шаг 1. Пользовательские параметры"
+
+#: .\templates\app_market\order.html:35 .\templates\app_market\order.html:139
+msgid "Step 2. Delivery Method"
+msgstr "Шаг 2. Способ доставки"
+
+#: .\templates\app_market\order.html:38 .\templates\app_market\order.html:178
+msgid "Step 3. Payment method"
+msgstr "Шаг 3. Способ оплаты"
+
+#: .\templates\app_market\order.html:41 .\templates\app_market\order.html:205
+msgid "Step 4. Order Confirmation"
+msgstr "Шаг 4. Подтверждение заказа"
+
+#: .\templates\app_market\order.html:119
+msgid "I am already registered"
+msgstr "Я уже зарегистрирован"
+
+#: .\templates\app_market\order.html:130 .\templates\app_market\order.html:173
+#: .\templates\app_market\order.html:198
+msgid "Next"
+msgstr "Следующий"
+
+#: .\templates\app_market\order.html:146
+#: .\templates\app_users\historyorder.html:32
+#: .\templates\app_users\oneorder.html:50
+msgid "Regular delivery"
+msgstr "Обычная доставка"
+
+#: .\templates\app_market\order.html:158
+#: .\templates\app_users\oneorder.html:57
+msgid "City"
+msgstr "Город"
+
+#: .\templates\app_market\order.html:163 .\templates\app_market\order.html:237
+#: .\templates\app_users\oneorder.html:61
+msgid "Address"
+msgstr "Адресс"
+
+#: .\templates\app_market\order.html:168
+msgid "Comment on the order"
+msgstr "Оставить комментарий к заказу"
+
+#: .\templates\app_market\order.html:186
+#: .\templates\app_users\historyorder.html:42
+#: .\templates\app_users\oneorder.html:68
+msgid "Online Card"
+msgstr "Онлайн карта"
+
+#: .\templates\app_market\order.html:192
+msgid "Online from a random someone else s account"
+msgstr "Онлайн со случайного счета"
+
+#: .\templates\app_market\order.html:219
+msgid "Telephone"
+msgstr "Телефон"
+
+#: .\templates\app_market\order.html:229
+#: .\templates\app_users\historyorder.html:29
+#: .\templates\app_users\oneorder.html:47
+msgid "Type of delivery"
+msgstr "Тип доставки"
+
+#: .\templates\app_market\order.html:283
+#: .\templates\app_market\widgets\product\tabs\sellers_tab.html:15
+msgid "pc."
+msgstr "шт."
+
+#: .\templates\app_market\order.html:291
+#: .\templates\app_users\oneorder.html:140
+msgid "Total"
+msgstr "Всего"
+
+#: .\templates\app_market\order.html:294
+msgid "including the shipping price"
+msgstr "включая стоимость доставки"
+
+#: .\templates\app_market\order.html:300
+#: .\templates\app_market\pay_parts\online.html:14
+#: .\templates\app_market\pay_parts\someone.html:20
+#: .\templates\app_users\oneorder.html:150
+msgid "To pay"
+msgstr "Оплатить"
+
+#: .\templates\app_market\order.html:317
+msgid "Authorization"
+msgstr "Авторизация"
+
+#: .\templates\app_market\order.html:350
+#: .\templates\registration\login.html:43
+msgid "Forgotten your password or username?"
+msgstr "Забыли пароль или логин?"
+
+#: .\templates\app_market\order.html:352
+#: .\templates\registration\login.html:45
+msgid "Don't have an account?"
+msgstr "У вас нет аккаунта?"
+
+#: .\templates\app_market\order.html:353
+#: .\templates\registration\login.html:46
+msgid "Register now"
+msgstr "Зарегистрироваться"
+
+#: .\templates\app_market\pay_parts\online.html:8
+msgid "Card number"
+msgstr "Номер карты"
+
+#: .\templates\app_market\pay_parts\someone.html:10
+msgid "Account number"
+msgstr "Аккаунт"
+
+#: .\templates\app_market\pay_parts\someone.html:16
+msgid "Generate a random invoice"
+msgstr "Создать случайный счет-фактуру"
+
+#: .\templates\app_market\product.html:61
+msgid "Type of product"
+msgstr "Тип продукта"
+
+#: .\templates\app_market\product.html:62
+msgid "Model"
+msgstr "Модель"
+
+#: .\templates\app_market\product.html:63
+msgid "Мanufacturer"
+msgstr "Производитель"
+
+#: .\templates\app_market\product.html:83
+msgid "Add To Cart"
+msgstr "Добавить в корзину"
+
+#: .\templates\app_market\progressPayment.html:10
+#: .\templates\app_market\progressPayment.html:16
+msgid "Waiting for payment"
+msgstr "Ожидается оплата"
+
+#: .\templates\app_market\progressPayment.html:25
+msgid "We are waiting for payment confirmation by the payment system"
+msgstr "Ждем подтверждения оплаты от платежной системы"
+
+#: .\templates\app_market\sale.html:8
+msgid "About Sale"
+msgstr "Скидки"
+
+#: .\templates\app_market\sale.html:13
+#: .\templates\app_market\seller_detail.html:13
+#: .\templates\app_market\seller_list.html:13
+#: .\templates\app_market\shop.html:13
+msgid "About Us"
+msgstr "О нас"
+
+#: .\templates\app_market\sale.html:23
+msgid "Weight"
+msgstr "Ширина"
+
+#: .\templates\app_market\sale.html:24
+msgid "Size"
+msgstr "Размер"
+
+#: .\templates\app_market\sale.html:25
+msgid "Type"
+msgstr "Тип"
+
+#: .\templates\app_market\sale_list.html:8
+#: .\templates\app_market\sale_list.html:13
+msgid "Sale"
+msgstr "Распродажа"
+
+#: .\templates\app_market\seller_detail.html:8
+#: .\templates\app_market\seller_list.html:8
+msgid "About"
+msgstr "О продавце"
+
+#: .\templates\app_market\seller_detail.html:41
+msgid "Money Back guarantee"
+msgstr "Гарантия возврата денег"
+
+#: .\templates\app_market\seller_detail.html:140
+msgid "Store Hystory"
+msgstr "Информаци о продавце"
+
+#: .\templates\app_market\seller_detail.html:146
+#: .\templates\app_market\widgets\shop_cards.html:3
+msgid "Popular Products"
+msgstr "Популярные товары"
+
+#: .\templates\app_market\shop.html:8
+msgid "About Megano"
+msgstr "Про нас"
+
+#: .\templates\app_market\shop.html:56
+msgid "Megano Store Hystory"
+msgstr "История Megano"
+
+#: .\templates\app_market\universe_payment.html:20
+msgid "payment"
+msgstr "оплата"
+
+#: .\templates\app_market\universe_payment.html:34
+msgid "no orders for payment"
+msgstr "нет заказов для оплаты"
+
+#: .\templates\app_market\widgets\cart.html:11
+msgid "RUB"
+msgstr "РУБ"
+
+#: .\templates\app_market\widgets\category\filter_category.html:5
+#: .\templates\app_market\widgets\category\filter_category.html:40
+msgid "Filter"
+msgstr "Фильтр"
+
+#: .\templates\app_market\widgets\category\filter_category.html:13
+msgid "Price:"
+msgstr "цена:"
+
+#: .\templates\app_market\widgets\category\filter_category.html:34
+msgid "Goods in stock"
+msgstr "Товар в наличии"
+
+#: .\templates\app_market\widgets\category\popular_tag.html:6
+msgid "Popular tags"
+msgstr "Популярные тэги"
+
+#: .\templates\app_market\widgets\category\sorted_category.html:4
+msgid "Sort by: "
+msgstr "Сортировать по: "
+
+#: .\templates\app_market\widgets\category\sorted_category.html:9
+msgid "Popularity"
+msgstr "Популярность"
+
+#: .\templates\app_market\widgets\category\sorted_category.html:13
+#: .\templates\app_market\widgets\product\base_detail_product_tabs.html:15
+#: .\templates\app_market\widgets\product\tabs\review_tab.html:6
+msgid "Reviews"
+msgstr "Отзывы"
+
+#: .\templates\app_market\widgets\category\sorted_category.html:15
+msgid "Novelty"
+msgstr "Новизна"
+
+#: .\templates\app_market\widgets\product\base_detail_product_tabs.html:6
+msgid "Description"
+msgstr "Описание"
+
+#: .\templates\app_market\widgets\product\base_detail_product_tabs.html:9
+msgid "Sellers"
+msgstr "Продавцы"
+
+#: .\templates\app_market\widgets\product\base_detail_product_tabs.html:12
+msgid "AdditionaL Info"
+msgstr "Дополнительная информация"
+
+#: .\templates\app_market\widgets\product\tabs\description_tab.html:21
+msgid "Specifications"
+msgstr "Характеристики"
+
+#: .\templates\app_market\widgets\product\tabs\description_tab.html:22
+msgid "Meaning"
+msgstr "Значение"
+
+#: .\templates\app_market\widgets\product\tabs\review_tab.html:33
+msgid "Add Review"
+msgstr "Добавить комментарий"
+
+#: .\templates\app_market\widgets\product\tabs\review_tab.html:55
+msgid "Submit Review"
+msgstr "Комментировать"
+
+#: .\templates\app_market\widgets\product\tabs\review_tab.html:60
+msgid "To add a comment, you must log in"
+msgstr "Чтобы добавить комментарий, вы должны авторизоваться"
+
+#: .\templates\app_market\widgets\product\tabs\sellers_tab.html:24
+msgid "Buy"
+msgstr "Купить"
+
+#: .\templates\app_market\widgets\viewed_good_list.html:70
+msgid "Go to the full list"
+msgstr "Полный список"
+
+#: .\templates\app_users\account.html:34
+msgid "Anonimouce"
+msgstr "Аноним"
+
+#: .\templates\app_users\account.html:37
+msgid "Edit profile"
+msgstr "Изменить профиль"
+
+#: .\templates\app_users\historyorder.html:23 .\templates\index.html:15
+msgid "from"
+msgstr "от"
+
+#: .\templates\app_users\historyorder.html:44
+#: .\templates\app_users\oneorder.html:70
+msgid "Online from a random someone else's account"
+msgstr "Онлайн со случайного чужого счета"
+
+#: .\templates\app_users\historyorder.html:49
+msgid "Total price"
+msgstr "Общая цена"
+
+#: .\templates\app_users\historyorder.html:56
+#: .\templates\app_users\oneorder.html:75
+msgid "Status"
+msgstr "Статус"
+
+#: .\templates\app_users\historyorder.html:59
+#: .\templates\app_users\oneorder.html:78
+msgid "Paid up"
+msgstr "Оплачено"
+
+#: .\templates\app_users\historyorder.html:61
+#: .\templates\app_users\oneorder.html:80
+msgid "Delivered"
+msgstr "Доставляется"
+
+#: .\templates\app_users\historyorder.html:63
+#: .\templates\app_users\oneorder.html:82
+msgid "Not paid"
+msgstr "Не оплачено"
+
+#: .\templates\app_users\historyorder.html:69
+#: .\templates\app_users\oneorder.html:88
+msgid "Payment failed"
+msgstr "Платеж не прошел"
+
+#: .\templates\app_users\oneorder.html:28
+msgid "Order date"
+msgstr "Дата заказа"
+
+#: .\templates\app_users\oneorder.html:131
+msgid "ct."
+msgstr "шт."
+
+#: .\templates\app_users\oneorder.html:146
+msgid "specify the account or card number"
+msgstr "укажите номер счета или карты"
+
+#: .\templates\app_users\profile.html:40
+msgid "Choose avatar"
+msgstr "Изменить автар"
+
+#: .\templates\app_users\profile.html:83
+msgid "Save"
+msgstr "Сохранить"
+
+#: .\templates\app_users\signup.html:43
+msgid "Already have an account?"
+msgstr "Уже есть аккаунт?"
+
+#: .\templates\app_users\widgets\navigation.html:6
+msgid "Navigation"
+msgstr "Навигация"
+
+#: .\templates\base.html:7
+msgid "Description page"
+msgstr "Описание страницы"
+
+#: .\templates\base_part\contacts.html:20
+msgid ""
+"Megano Business Center, 0012 United States, Los Angeles Creative Street 15/4"
+msgstr "Megano бизнес-центер, 0012 США, Лос-Анджелес, Творческая улица 15/4"
+
+#: .\templates\base_part\footer.html:11
+msgid ""
+"Thesis on the course \"Python-Django framework\" by SkillBox, 2021-2022, the "
+"work was performed by: Dinar Shaikhutdinov, Ilya Zhuravlev, Viktor Kachanov, "
+"Vladimir Skripnik"
+msgstr ""
+"Дипломная работа по курсу 'Python-Django framework' от SkillBox, 2021-2022, "
+"работу выполняли: Динар Шайхутдинов, Илья Журавлев, Виктор Качанов, Владимир "
+"Скрипник"
+
+#: .\templates\base_part\footer.html:13
+msgid "Project Manager: Andreev Roman"
+msgstr "Руководитель проекта: Андреев Роман"
+
+#: .\templates\base_part\footer.html:49
+msgid "Useful Links"
+msgstr "Полезные ссылки"
+
+#: .\templates\base_part\footer.html:52
+msgid "Checkout"
+msgstr "Отладка"
+
+#: .\templates\base_part\footer.html:54
+msgid "My Cart"
+msgstr "Моя корзина"
+
+#: .\templates\base_part\footer.html:58
+msgid "Order Info"
+msgstr "Заказ"
+
+#: .\templates\base_part\footer.html:60
+msgid "Terms"
+msgstr "Условия"
+
+#: .\templates\base_part\footer.html:62
+msgid "Conditions"
+msgstr "Правила"
+
+#: .\templates\base_part\footer.html:68
+msgid "My Account"
+msgstr "Аккаунт"
+
+#: .\templates\base_part\footer.html:71
+msgid "Accessories"
+msgstr "Аксессуары"
+
+#: .\templates\base_part\footer.html:73
+msgid "Bags"
+msgstr "Сумки"
+
+#: .\templates\base_part\footer.html:75
+msgid "Cameras"
+msgstr "Камеры"
+
+#: .\templates\base_part\footer.html:77
+msgid "Clothes"
+msgstr "Одежда"
+
+#: .\templates\base_part\footer.html:79
+msgid "Electronics"
+msgstr "Электроника"
+
+#: .\templates\base_part\footer.html:81
+msgid "Fashion"
+msgstr "В моде"
+
+#: .\templates\base_part\footer.html:90
+msgid "Address: New York, north"
+msgstr "Адрес: Нью-Йорк, север"
+
+#: .\templates\base_part\footer.html:90
+msgid "Avenue"
+msgstr "Проспект"
+
+#: .\templates\base_part\footer.html:101
+msgid "Accepted Payments"
+msgstr "Платежи"
+
+#: .\templates\base_part\header.html:16
+msgid "Free Delivery"
+msgstr "Бесплатная доставка"
+
+#: .\templates\base_part\header.html:84
+msgid "New"
+msgstr "Новинка"
+
+#: .\templates\base_part\header.html:85
+msgid "Shop"
+msgstr "Каталог"
+
+#: .\templates\base_part\header.html:88
+msgid "partners"
+msgstr "партнеры"
+
+#: .\templates\base_part\header.html:91
+msgid "Sales"
+msgstr "распродажа"
+
+#: .\templates\base_part\header.html:96
+msgid "Hot"
+msgstr "Горячее"
+
+#: .\templates\base_part\header.html:97
+msgid "Gallery"
+msgstr "Галерея"
+
+#: .\templates\base_part\header.html:104
+msgid "Purchase"
+msgstr "Покупка"
+
+#: .\templates\base_part\header.html:117
+msgid "Show navigation"
+msgstr "Показать навигацию"
+
+#: .\templates\base_part\slider.html:19
+msgid "Get Started"
+msgstr "Начать"
+
+#: .\templates\base_part\widgets\categories.html:11
+msgid "All Departments"
+msgstr "Все Категории"
+
+#: .\templates\base_part\widgets\search_categories.html:11
+msgid "What are you looking for ..."
+msgstr "То, что ты ищешь ..."
+
+#: .\templates\base_part\widgets\search_categories.html:24
+msgid "Search"
+msgstr "Искать"
+
+#: .\templates\index.html:45
+msgid "Limited Deals"
+msgstr "Ограниченные предложения"
+
+#: .\templates\index.html:84
+msgid "days"
+msgstr "дней"
+
+#: .\templates\index.html:91
+msgid "hours"
+msgstr "часов"
+
+#: .\templates\index.html:98
+msgid "mins"
+msgstr "минут"
+
+#: .\templates\index.html:105
+msgid "secs"
+msgstr "секунд"
+
+#: .\templates\index.html:125
+msgid "Hot Offers"
+msgstr "Горячие предложения"
+
+#: .\templates\index.html:236
+msgid "Limited edition"
+msgstr "Ограниченный выпуск"
+
+#: .\templates\registration\logged_out.html:14
+msgid "Thanks for spending some quality time with the Web site today."
+msgstr "Спасибо, что провели сегодня немного времени с нами."
+
+#: .\templates\registration\logged_out.html:18
+msgid "Log in again"
+msgstr "Войти снова"
+
+#: .\templates\registration\password_change_done.html:14
+msgid "Your password was changed."
+msgstr "Изменение пароля"
+
+#: .\templates\registration\password_change_form.html:16
+msgid ""
+"Please enter your old password, for security’s sake, and then enter your new "
+"password twice so we can verify you typed it in correctly."
+msgstr ""
+"Пожалуйста, введите старый пароль в целях безопасности, а затем введите "
+"новый пароль дважды для подтверждения"
+
+#: .\templates\registration\password_change_form.html:42
+#: .\templates\registration\password_reset_confirm.html:43
+msgid "Change my password"
+msgstr "Изменить мой пароль"
+
+#: .\templates\registration\password_reset_complete.html:14
+msgid "Your password has been set. You can login right now."
+msgstr "Ваш пароль установлен. Вы можете войти прямо сейчас."
+
+#: .\templates\registration\password_reset_confirm.html:17
+msgid ""
+"Please enter your new password twice so we can verify you typed it in "
+"correctly."
+msgstr "Пожалуйста, введите свой новый пароль дважды для подтверждения"
+
+#: .\templates\registration\password_reset_confirm.html:51
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.  Please request a new password reset."
+msgstr ""
+"Ссылка для сброса пароля недействительна, возможно, она уже была "
+"использована. Запросите новый сброс пароля."
+
+#: .\templates\registration\password_reset_done.html:14
+msgid ""
+"We’ve emailed you instructions for setting your password, if an account "
+"exists with the email you entered. You should receive them shortly."
+msgstr ""
+"Мы отправили вам по электронной почте инструкции по установке пароля, если "
+"аккаунт существует с указанным вами адресом электронной почты, Вы получите "
+"их в ближайшее время"
+
+#: .\templates\registration\password_reset_done.html:18
+msgid ""
+"If you don’t receive an email, please make sure you’ve entered the address "
+"you registered with, and check your spam folder."
+msgstr ""
+"Если вы не получили письмо по электронной почте, убедитесь, что вы ввели "
+"верный адрес, и проверьте папку со спамом."
+
+#: .\templates\registration\password_reset_form.html:17
+msgid ""
+"Forgotten your password? Enter your email address below, and we’ll email "
+"instructions for setting a new one."
+msgstr ""
+"Забыли свой пароль? Введите ниже свой адрес электронной почты, и мы отправим "
+"вам инструкцию по установке нового"
+
+#: .\templates\registration\password_reset_form.html:44
+msgid "Reset my password"
+msgstr "Сбросить мой пароль"
+
+#~ msgid "Discount on a set of products"
+#~ msgstr "Discount on a set of products"
+
+#~ msgid "catalog_good"
+#~ msgstr "саталог товара"
+
+#~ msgid "With free shipping"
+#~ msgstr "С бесплатной доставкой"
+
+#~ msgid ""
+#~ "\n"
+#~ "Megano Business Center,\n"
+#~ "0012 United States, Los Angeles\n"
+#~ "Creative Street 15/4\n"
+#~ msgstr ""
+#~ "\n"
+#~ "Megano бизнес-центер0012 США, Лос-Анджелес\n"
+#~ "Творческая улица 15/4\n"
+
+#~ msgid "Blog"
+#~ msgstr "Блог"

@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}{% trans 'Profile' %}{% endblock %}
+
+{% block content %}
+    <div class="Middle Middle_top">
+        {{ block.super }}
+
+        <div class="Section Section_column Section_columnLeft">
+            <div class="wrap">
+                {% include 'app_users/widgets/navigation.html' %}
+                <div class="Section-content">
+                    <div class="Profile">
+                        <form class="form Profile-form" action="{% url 'profile' %}" method="post"
+                              enctype="multipart/form-data">
+                            {% csrf_token %}
+
+                            <div class="row">
+                                <div class="row-block">
+                                    {% for field in form.visible_fields %}
+                                        {% if field.html_name in 'avatar,full_name' %}
+                                            <div class="form-group">
+                                                {% if field.html_name == 'avatar' %}
+                                                    <label class="form-label" for="{{ field.id_for_label }}">
+                                                        {{ field.label }}
+                                                    </label>
+
+                                                    <div class="Profile-avatar">
+                                                        <div class="Profile-img">
+                                                            {% if form.instance.avatar %}
+                                                                <img src="{{ form.instance.avatar.url }}"
+                                                                     alt="avatar.jpg"/>
+                                                            {% else %}
+                                                                <img src="{% static 'assets/img/content/home/card.jpg' %}"
+                                                                     alt="card.jpg"/>
+                                                            {% endif %}
+                                                        </div>
+                                                        <label class="Profile-fileLabel" for="{{ field.id_for_label }}">
+                                                            {% trans 'Choose avatar' %}
+                                                        </label>
+
+                                                        {{ field }}
+
+                                                        {% for error in field.errors %}
+                                                            <div class="form-error">{{ error }}</div>
+                                                        {% endfor %}
+                                                    </div>
+                                                    {% elif field.html_name == 'full_name' %}
+                                                    <label class="form-label" for="{{ field.auto_id }}">
+                                                        {{ field.label }}
+                                                    </label>
+
+                                                    {{ field }}
+
+                                                    {% for error in field.errors %}
+                                                        <div class="form-error">{{ error }}</div>
+                                                    {% endfor %}
+
+                                                {% endif %}
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+
+                                <div class="row-block">
+                                    {% for field in form.visible_fields %}
+                                        {% if field.html_name not in 'avatar,full_name' %}
+                                            <div class="form-group">
+                                                <label class="form-label" for="{{ field.auto_id }}">
+                                                    {{ field.label }}
+                                                </label>
+
+                                                {{ field }}
+
+                                                {% for error in field.errors %}
+                                                    <div class="form-error">{{ error }}</div>
+                                                {% endfor %}
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                    <button class="btn btn_primary form-btn" type="submit">{% trans 'Save' %}</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'assets/js/mask.js' %}"></script>
+{% endblock %}

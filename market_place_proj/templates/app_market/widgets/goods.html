@@ -1,0 +1,75 @@
+{% load static %}
+
+<div class="Cards">
+    {% for good in goods %}
+        <div class="Card" id="good_id_{{ good.pk }}">
+            <a class="Card-picture" href="{% url 'good_detail' pk=good.pk %}">
+                {% if good.image.file %}
+                    <img alt="card.jpg" src="{{ good.image.file.url }}">
+                {% elif good.image.link %}
+                    <img alt="card.jpg" src="{{ good.image.link }}">
+                {% else %}
+                    <img src="{% static 'assets/img/icons/nophoto.svg' %}" alt="no image"/>
+                {% endif %}
+            </a>
+            <div class="Card-content">
+                <strong class="Card-title">
+                    <a href="{% url 'good_detail' pk=good.pk %}">{{ good.title }}</a>
+                </strong>
+                <div class="Card-description">
+                    <div class="Card-cost">
+                        {% if good.discounted_price %}
+                            <div class="Card-price">{{ good.discounted_price|floatformat:"2" }} ₽</div>
+                            <div class="Card-priceOld">{{ good.avg_price|floatformat:"2" }} ₽</div>
+                        {% else %}
+                            <div class="Card-price">{{ good.avg_price|floatformat:"2" }} ₽</div>
+                        {% endif %}
+                    </div>
+                    <div class="Card-category">{{ good.category }}
+                    {% if good.group %}
+                        {{ good.group.title }}
+                        {% endif %}
+                    </div>
+                    <div class="Card-hover">
+                        <form class="Card-btn" action="{% url 'views' mtd='add' good_id=good.pk %}"
+                              method="POST">
+                            {% csrf_token %}
+                            <button class="Card-btn-form" type="submit">
+                                <img alt="bookmark.svg" src="{% static 'assets/img/icons/card/bookmark.svg' %}">
+                            </button>
+                        </form>
+                        <form class="Card-btn"
+                              action="{% url 'good_in_cart' mtd='add_random_good' good_id=good.pk %}"
+                              method="POST">
+                            {% csrf_token %}
+                            <button class="Card-btn-form" type="submit">
+                                <img src="{% static 'assets/img/icons/card/cart.svg' %}" alt="cart.svg"/>
+                            </button>
+                        </form>
+                        {% if good.pk in ids %}
+                            <form class="Card-btn" action="{% url 'delete_good_from_compare' id=good.pk %}"
+                                  method="POST">
+                                {% csrf_token %}
+                                <button class="Card-btn-form" type="submit">
+                                    <img src="{% static 'assets/img/icons/card/delete.svg' %}" alt="delete.svg"/>
+                                </button>
+                            </form>
+                        {% else %}
+                            <form class="Card-btn" action="{% url 'add_good_to_compare' id=good.pk %}" method="POST">
+                                {% csrf_token %}
+                                <button class="Card-btn-form" type="submit">
+                                    <img src="{% static 'assets/img/icons/card/change.svg' %}" alt="change.svg"/>
+                                </button>
+                            </form>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% if good.sale %}
+                <div class="Card-sale">-{{ good.sale|floatformat:"0" }}%</div>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
+
+{% include 'base_part/widgets/pagination.html' with page=goods %}

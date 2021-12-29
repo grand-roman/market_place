@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% load i18n static view_breadcrumbs goods_views %}
+
+{% block title %}{% trans 'Account' %}{% endblock %}
+
+{% block content %}
+    <div class="Middle Middle_top">
+        {{ block.super }}
+
+        <div class="Section Section_column Section_columnLeft">
+            <div class="wrap">
+                {% include 'app_users/widgets/navigation.html' %}
+
+                <div class="Section-content">
+                    <div class="Account">
+                        <div class="Account-group">
+                            <div class="Account-column" style="min-width: 100px;">
+                                <div class="Account-avatar">
+                                    {% if object.avatar %}
+                                        <img src="{{ object.avatar.url }}" alt="avatar"/>
+                                    {% else %}
+                                        <img src="{% static 'assets/img/content/home/card.jpg' %}" alt="card.jpg"/>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="Account-column">
+                                <div class="Account-name">
+                                    {% if object.full_name %}
+                                        {{ object.full_name }}
+                                    {% elif object.username %}
+                                        {{ object.username }}
+
+                                    {% else %}
+                                        {% trans 'Anonimouce' %}
+                                    {% endif %}
+                                </div>
+                                <a class="Account-editLink" href="{% url 'profile' %}">{% trans 'Edit profile' %}</a>
+                            </div>
+                        </div>
+
+
+                        <div class="Account-group">
+                            <div class="Account-column Account-column_full">
+                                <div class="Cards Cards_account">
+                                    {% for item in goods %}
+                                        <div class="Card" id="good_id_{{ item.good.pk }}">
+                                            <a class="Card-picture" href="{% url 'good_detail' pk=item.good.pk %}">
+                                                {% if item.good.image.file %}
+                                                    <img alt="card.jpg" src="{{ item.good.image.file.url }}">
+                                                {% elif item.good.image.link %}
+                                                    <img alt="card.jpg" src="{{ item.good.image.link }}">
+                                                {% else %}
+                                                    <img src="{% static 'assets/img/icons/nophoto.svg' %}" alt="no image"/>
+                                                {% endif %}
+                                            </a>
+                                            <div class="Card-content">
+                                                <strong class="Card-title">
+                                                    <a href="{% url 'good_detail' pk=item.good.pk %}">{{ item.good.title }}</a>
+                                                </strong>
+                                                <div class="Card-description">
+                                                    <div class="Card-cost">
+                                                        {% if item.good.discounted_price %}
+                                                            <div class="Card-price">{{ item.good.discounted_price|floatformat:"2" }}&#8381;</div>
+                                                            <div class="Card-priceOld">{{ item.avg_price|floatformat:"2" }} &#8381;</div>
+                                                        {% else %}
+                                                            <div class="Card-price">{{ item.avg_price|floatformat:"2" }} &#8381;</div>
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="Card-category">{{ item.good.category }}</div>
+                                                    <div class="Card-hover">
+                                                        <form class="Card-btn" action="{% url 'views' mtd='delete' good_id=item.pk %}"
+                                                              method="POST">
+                                                            {% csrf_token %}
+                                                            <button class="Card-btn-form" type="submit">
+                                                                <img src="{% static 'assets/img/icons/card/delete.svg' %}" alt="delete.svg"/>
+                                                            </button>
+                                                        </form>
+
+                                                        <form class="Card-btn"
+                                                              action="{% url 'good_in_cart' mtd='add_random_good' good_id=item.good.pk %}"
+                                                              method="POST">
+                                                            {% csrf_token %}
+                                                            <button class="Card-btn-form" type="submit">
+                                                                <img src="{% static 'assets/img/icons/card/cart.svg' %}" alt="cart.svg"/>
+                                                            </button>
+                                                        </form>
+
+                                                        <form class="Card-btn" action="{% url 'add_good_to_compare' id=item.good.pk %}"
+                                                              method="POST">
+                                                            {% csrf_token %}
+                                                            <button class="Card-btn-form" type="submit">
+                                                                <img src="{% static 'assets/img/icons/card/change.svg' %}" alt="change.svg"/>
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% if item.good.sale %}
+                                                <div class="Card-sale">-{{ item.good.sale|floatformat:"0" }}%</div>
+                                            {% endif %}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        {% viewed_goods request 3 %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

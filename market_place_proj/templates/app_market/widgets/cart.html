@@ -1,0 +1,13 @@
+{% load static i18n %}
+
+<a class="CartBlock-block" href="{% url 'cart' %}">
+    <img class="CartBlock-img" src="{% static 'assets/img/icons/cart.svg' %}" alt="cart.svg"/>
+    {% if cart.count > 0 %}
+        <span class="CartBlock-amount">{{ cart.count }}</span>
+    {% endif %}
+</a>
+<div class="CartBlock-block">
+    <span class="CartBlock-price">
+        {{ cart.price }} {% trans 'RUB' %}
+    </span>
+</div>

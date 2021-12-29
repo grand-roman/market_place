@@ -1,0 +1,334 @@
+{% extends "base.html" %}
+{% load static i18n goods_views %}
+
+{% block content %}
+    <div class="Middle">
+        <div class="Section">
+            <div class="wrap">
+                <div class="BannersHome">
+                    {% for good in best_cats %}
+                        <a class="BannersHomeBlock" href="{% url 'good_detail' pk=good.pk %}">
+                            <div class="BannersHomeBlock-row">
+                                <div class="BannersHomeBlock-block">
+                                    <strong class="BannersHomeBlock-title">{{ good.category.title }}</strong>
+
+                                    <div class="BannersHomeBlock-content">{% trans 'from' %}&#32;<span
+                                            class="BannersHomeBlock-price">{{ good.avg_price|floatformat:"2" }}</span>
+                                    </div>
+                                </div>
+
+                                <div class="BannersHomeBlock-block">
+                                    <div class="BannersHomeBlock-img">
+                                        {% if good.image.file %}
+                                            <img alt="card.jpg" src="{{ good.image.file.url }}">
+                                        {% elif good.image.link %}
+                                            <img alt="card.jpg" src="{{ good.image.link }}">
+                                        {% else %}
+                                            <img src="{% static 'assets/img/icons/nophoto.svg' %}"
+                                                 alt="no image"/>
+                                        {% endif %}
+
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="Section Section_column Section_columnLeft Section_columnDesktop">
+            <div class="wrap">
+                <div class="Section-column">
+                    <div class="Section-columnSection Section-columnSection_mark">
+                        <header class="Section-columnHeader">
+                            <strong class="Section-columnTitle">{% trans 'Limited Deals' %}</strong>
+                        </header>
+                        <div class="Card" id="limit_good_id_{{ limit_good.pk }}">
+                            <a class="Card-picture" href="{% url 'good_detail' pk=limit_good.pk %}">
+                                {% if limit_good.image.file %}
+                                    <img alt="card.jpg" src="{{ limit_good.image.file.url }}">
+                                {% elif limit_good.image.link %}
+                                    <img alt="card.jpg" src="{{ limit_good.image.link }}">
+                                {% else %}
+                                    <img src="{% static 'assets/img/icons/nophoto.svg' %}"
+                                         alt="no image"/>
+                                {% endif %}
+                            </a>
+                            <div class="Card-content">
+                                <strong class="Card-title">
+                                    <a href="{% url 'good_detail' pk=limit_good.pk %}">{{ limit_good.title }}</a>
+                                </strong>
+                                <div class="Card-description">
+                                    <div class="Card-cost">
+                                        {% if good.discounted_price %}
+                                            <div class="Card-price">
+                                                {{ limit_good.discounted_price|floatformat:"2" }}
+                                            </div>
+                                            <div class="Card-priceOld">
+                                                {{ limit_good.avg_price|floatformat:"2" }} ₽
+                                            </div>
+                                        {% else %}
+                                            <div class="Card-price">{{ limit_good.avg_price|floatformat:"2" }}
+                                                ₽
+                                            </div>
+                                        {% endif %}
+                                    </div>
+
+                                    <div class="Card-category">{{ limit_good.category }}</div>
+                                </div>
+                                <div class="CountDown" data-date="{{ cutdown }}">
+                                    <div class="CountDown-block">
+                                        <div class="CountDown-wrap">
+                                            <div class="CountDown-days"></div>
+                                            <span class="CountDown-label">{% trans 'days' %}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="CountDown-block">
+                                        <div class="CountDown-wrap">
+                                            <div class="CountDown-hours"></div>
+                                            <span class="CountDown-label">{% trans 'hours' %}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="CountDown-block">
+                                        <div class="CountDown-wrap">
+                                            <div class="CountDown-minutes"></div>
+                                            <span class="CountDown-label">{% trans 'mins' %}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="CountDown-block">
+                                        <div class="CountDown-wrap">
+                                            <div class="CountDown-secs"></div>
+                                            <span class="CountDown-label">{% trans 'secs' %}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="Section-content">
+                    {% shop_cards 3 %}
+                </div>
+            </div>
+        </div>
+
+        <div class="Section Section_dark">
+            <div class="wrap">
+                <div class="Section-content">
+                    <div class="Slider Slider_carousel">
+                        <header class="Section-header">
+                            <h2 class="Section-title">{% trans 'Hot Offers' %}</h2>
+
+                            <div class="Section-control">
+                                <div class="Slider-navigate"></div>
+                            </div>
+                        </header>
+
+                        <div class="Slider-box Cards Cards_hz">
+                            {% for good in hot_offers %}
+                                <div class="Slider-item">
+                                    <div class="Slider-content">
+                                        <div class="Card" id="hot_good_id_{{ good.pk }}">
+                                            <a class="Card-picture" href="{% url 'good_detail' pk=good.pk %}">
+                                                {% if good.image.file %}
+                                                    <img height="160px" alt="card.jpg" src="{{ good.image.file.url }}">
+                                                {% elif good.image.link %}
+                                                    <img height="160px" alt="card.jpg" src="{{ good.image.link }}">
+                                                {% else %}
+                                                    <img height="160px"
+                                                         src="{% static 'assets/img/icons/nophoto.svg' %}"
+                                                         alt="no image"/>
+                                                {% endif %}
+                                            </a>
+                                            <div class="Card-content">
+                                                <strong class="Card-title">
+                                                    <a href="{% url 'good_detail' pk=good.pk %}">
+                                                        {{ good.title }}
+                                                    </a>
+                                                </strong>
+
+                                                <div class="Card-description">
+                                                    <div class="Card-cost">
+                                                        {% if good.discounted_price %}
+                                                            <div class="Card-price">
+                                                                {{ good.discounted_price|floatformat:"2" }}
+                                                            </div>
+                                                            <div class="Card-priceOld">
+                                                                {{ good.avg_price|floatformat:"2" }} ₽
+                                                            </div>
+                                                        {% else %}
+                                                            <div class="Card-price">{{ good.avg_price|floatformat:"2" }}
+                                                                ₽
+                                                            </div>
+                                                        {% endif %}
+                                                    </div>
+
+                                                    <div class="Card-category">{{ good.category }}</div>
+
+                                                    <div class="Card-hover">
+                                                        <form class="Card-btn"
+                                                              action="{% url 'views' mtd='add' good_id=good.pk %}"
+                                                              method="POST">
+                                                            {% csrf_token %}
+                                                            <button class="Card-btn-form" type="submit">
+                                                                <img alt="bookmark.svg"
+                                                                     src="{% static 'assets/img/icons/card/bookmark.svg' %}">
+                                                            </button>
+                                                        </form>
+                                                        <form class="Card-btn"
+                                                              action="{% url 'good_in_cart' mtd='add_random_good' good_id=good.pk %}"
+                                                              method="POST">
+                                                            {% csrf_token %}
+                                                            <button class="Card-btn-form" type="submit">
+                                                                <img src="{% static 'assets/img/icons/card/cart.svg' %}"
+                                                                     alt="cart.svg"/>
+                                                            </button>
+                                                        </form>
+                                                        {% if good.pk in ids %}
+                                                            <form class="Card-btn"
+                                                                  action="{% url 'delete_good_from_compare' id=good.pk %}"
+                                                                  method="POST">
+                                                                {% csrf_token %}
+                                                                <button class="Card-btn-form" type="submit">
+                                                                    <img src="{% static 'assets/img/icons/card/delete.svg' %}"
+                                                                         alt="delete.svg"/>
+                                                                </button>
+                                                            </form>
+                                                        {% else %}
+                                                            <form class="Card-btn"
+                                                                  action="{% url 'add_good_to_compare' id=good.pk %}"
+                                                                  method="POST">
+                                                                {% csrf_token %}
+                                                                <button class="Card-btn-form" type="submit">
+                                                                    <img src="{% static 'assets/img/icons/card/change.svg' %}"
+                                                                         alt="change.svg"/>
+                                                                </button>
+                                                            </form>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="Card-sale">-60%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="Section Section_column Section_columnRight">
+            <div class="wrap">
+                <div class="Section-column">
+                    {% include 'base_part/tabular.html' %}
+                </div>
+                <div class="Section-content">
+                    <div class="Slider Slider_carousel">
+                        <header class="Section-header Section-header_close">
+                            <h2 class="Section-title">{% trans 'Limited edition' %}</h2>
+                            <div class="Section-control">
+                                <div class="Slider-navigate">
+                                </div>
+                            </div>
+                        </header>
+                        <div class="Slider-box Cards">
+                            {% for good in limit_goods %}
+                                <div class="Slider-item">
+                                    <div class="Slider-content">
+                                        <div class="Card" id="good_id_{{ good.pk }}">
+                                            <a class="Card-picture" href="{% url 'good_detail' pk=good.pk %}">
+                                                {% if good.image.file %}
+                                                    <img alt="card.jpg" src="{{ good.image.file.url }}">
+                                                {% elif good.image.link %}
+                                                    <img alt="card.jpg" src="{{ good.image.link }}">
+                                                {% else %}
+                                                    <img src="{% static 'assets/img/icons/nophoto.svg' %}"
+                                                         alt="no image"/>
+                                                {% endif %}
+                                            </a>
+                                            <div class="Card-content">
+                                                <strong class="Card-title">
+                                                    <a href="{% url 'good_detail' pk=good.pk %}">{{ good.title }}</a>
+                                                </strong>
+                                                <div class="Card-description">
+                                                    <div class="Card-cost">
+                                                        {% if good.discounted_price %}
+                                                            <div class="Card-price">
+                                                                {{ good.discounted_price|floatformat:"2" }} ₽
+                                                            </div>
+                                                            <div class="Card-priceOld">
+                                                                {{ good.avg_price|floatformat:"2" }} ₽
+                                                            </div>
+                                                        {% else %}
+                                                            <div class="Card-price">{{ good.avg_price|floatformat:"2" }}
+                                                                ₽
+                                                            </div>
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="Card-category">{{ good.category }}</div>
+                                                    <div class="Card-hover">
+                                                        <form class="Card-btn"
+                                                              action="{% url 'views' mtd='add' good_id=good.pk %}"
+                                                              method="POST">
+                                                            {% csrf_token %}
+                                                            <button class="Card-btn-form" type="submit">
+                                                                <img alt="bookmark.svg"
+                                                                     src="{% static 'assets/img/icons/card/bookmark.svg' %}">
+                                                            </button>
+                                                        </form>
+                                                        <form class="Card-btn"
+                                                              action="{% url 'good_in_cart' mtd='add_random_good' good_id=good.pk %}"
+                                                              method="POST">
+                                                            {% csrf_token %}
+                                                            <button class="Card-btn-form" type="submit">
+                                                                <img src="{% static 'assets/img/icons/card/cart.svg' %}"
+                                                                     alt="cart.svg"/>
+                                                            </button>
+                                                        </form>
+                                                        {% if good.pk in ids %}
+                                                            <form class="Card-btn"
+                                                                  action="{% url 'delete_good_from_compare' id=good.pk %}"
+                                                                  method="POST">
+                                                                {% csrf_token %}
+                                                                <button class="Card-btn-form" type="submit">
+                                                                    <img src="{% static 'assets/img/icons/card/delete.svg' %}"
+                                                                         alt="delete.svg"/>
+                                                                </button>
+                                                            </form>
+                                                        {% else %}
+                                                            <form class="Card-btn"
+                                                                  action="{% url 'add_good_to_compare' id=good.pk %}"
+                                                                  method="POST">
+                                                                {% csrf_token %}
+                                                                <button class="Card-btn-form" type="submit">
+                                                                    <img src="{% static 'assets/img/icons/card/change.svg' %}"
+                                                                         alt="change.svg"/>
+                                                                </button>
+                                                            </form>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% if good.sale %}
+                                                <div class="Card-sale">-{{ good.sale|floatformat:"0" }}%</div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

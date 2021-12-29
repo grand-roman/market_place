@@ -1,0 +1,367 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+
+{% block content %}
+    <div class="Middle Middle_top">
+        <div class="Middle-top">
+            <div class="wrap">
+                <div class="Middle-header">
+                    <h1 class="Middle-title">{% trans 'Making an order' %}</h1>
+                    <ul class="breadcrumbs Middle-breadcrumbs">
+                        <li class="breadcrumbs-item">
+                            <a href="{% url 'index' %}">{% trans 'home' %}</a>
+                        </li>
+                        <li class="breadcrumbs-item breadcrumbs-item_current">
+                            <span>{% trans 'Making an order' %}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="Section Section_column Section_columnRight Section_columnWide Order">
+            <div class="wrap">
+                <div class="Section-column">
+                    <div class="Section-columnSection">
+                        <header class="Section-header">
+                            <strong class="Section-title">{% trans 'Filling progress' %}</strong>
+                        </header>
+                        <div class="Section-columnContent">
+                            <ul class="menu menu_vt Order-navigate">
+                                <li class="{% if check_step == '0' or not check_step %}menu-item_ACTIVE{% endif %} menu-item">
+                                    <a class="menu-link" href="#step1">{% trans 'Step 1. User Parameters' %}</a>
+                                </li>
+                                <li class="{% if check_step == '1' %}menu-item_ACTIVE{% endif %} menu-item">
+                                    <a class="menu-link" href="#step2">{% trans 'Step 2. Delivery Method' %}</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a class="menu-link" href="#step3">{% trans 'Step 3. Payment method' %}</a>
+                                </li>
+                                <li class="{% if check_step == '2' %}menu-item_ACTIVE{% endif %} menu-item">
+                                    <a class="menu-link" href="#step4">{% trans 'Step 4. Order Confirmation' %}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="Section-content">
+                    <form class="form" method="post" id="pay_values">
+                        {% csrf_token %}
+                        <div class="Order-block {% if check_step == '0' %}Order-block_OPEN{% endif %}" id="step1">
+                            <header class="Section-header Section-header_sm">
+                                <h2 class="Section-title">{% trans 'Step 1. User Parameters' %}</h2>
+                            </header>
+
+                            <div class="row">
+                                <div class="row-block">
+                                    <div class="form-group">
+                                        <label class="form-label" for="name">{{ form.full_name.label }}</label>
+                                        {% if request.user.is_authenticated %}
+                                            <div class="form-input">{{ request.user.get_full_name }}</div>
+                                        {% else %}
+                                            {{ form.full_name }}
+                                            {% if form.full_name.errors %}
+                                                {% for error in form.full_name.errors %}
+                                                    <div class="form-error">{{ error }}</div>
+                                                {% endfor %}
+                                            {% endif %}
+                                        {% endif %}
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="phone">{{ form.phone.label }}</label>
+                                        {% if request.user.is_authenticated and request.user.phone %}
+                                            <div class="form-input">{{ request.user.get_phone }}</div>
+                                        {% else %}
+                                            {{ form.phone }}
+                                            {% if form.phone.errors %}
+                                                {% for error in form.phone.errors %}
+                                                    <div class="form-error">{{ error }}</div>
+                                                {% endfor %}
+                                            {% endif %}
+                                        {% endif %}
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="mail">{{ form.email.label }}</label>
+                                        {% if request.user.is_authenticated and request.user.email %}
+                                            <div class="form-input">{{ request.user.email }}</div>
+                                        {% else %}
+                                            {{ form.email }}
+                                            {% if form.email.errors %}
+                                                {% for error in form.email.errors %}
+                                                    <div class="form-error">{{ error }}</div>
+                                                {% endfor %}
+                                            {% endif %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% if not request.user.is_authenticated %}
+                                    <div class="row-block">
+                                        <div class="form-group">
+                                            <label class="form-label" for="password">{{ form.password1.label }}</label>
+                                            {{ form.password1 }}
+
+                                            {% for error in form.password1.errors %}
+                                                <div class="form-error">{{ error }}</div>
+                                            {% endfor %}
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label"
+                                                   for="passwordReply">{{ form.password2.label }}</label>
+                                            {{ form.password2 }}
+                                            {% for error in form.password2.errors %}
+                                                <div class="form-error">{{ error }}</div>
+                                            {% endfor %}
+                                        </div>
+                                        <div class="form-group">
+                                            <a class="btn btn_muted Order-btnReg myLinkModal"
+                                               {% if login_error %}id="fmp-button"{% endif %} href="#">
+                                                {% trans 'I am already registered' %}
+                                            </a>
+                                            <div id="myOverlay"></div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <input type="hidden" name="step" value="1">
+                            <input type="hidden" name="username" value="{{ request.session.session_key }}">
+                            <div class="Order-footer">
+                                <a class="btn btn_success Order-next" id="yourLinkId" href="#step2">
+                                    {% trans 'Next' %}</a>
+                            </div>
+                        </div>
+                    </form>
+
+                    <form class="form" method="post" id="pay_validation">
+                        {% csrf_token %}
+                        <div class="Order-block {% if check_step == '1' %}Order-block_OPEN{% endif %}" id="step2">
+                            <header class="Section-header Section-header_sm">
+                                <h2 class="Section-title">{% trans 'Step 2. Delivery Method' %}</h2>
+                            </header>
+                            <div class="form-group">
+                                <div>
+                                    <label class="toggle">
+                                        <input type="radio" name="delivery" value="ordinary" checked="checked"/><span
+                                            class="toggle-box"></span><span
+                                            class="toggle-text">{% trans 'Regular delivery' %}</span>
+                                    </label>
+                                </div>
+                                <div>
+                                    <label class="toggle">
+                                        <input type="radio" name="delivery" value="express"/><span
+                                            class="toggle-box"></span><span
+                                            class="toggle-text">{% trans 'Express delivery' %}</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="city">{% trans 'City' %}
+                                </label>
+                                <input class="form-input" id="city" name="city" type="text"/>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="address">{% trans 'Address' %}
+                                </label>
+                                <textarea class="form-textarea" name="address" id="address"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="description">{% trans 'Comment on the order' %}
+                                </label>
+                                <textarea class="form-textarea" name="description" id="description"></textarea>
+                            </div>
+                            <div class="Order-footer"><a class="btn btn_success Order-next"
+                                                         href="#step3">{% trans 'Next' %}</a>
+                            </div>
+                        </div>
+                        <div class="Order-block" id="step3">
+                            <header class="Section-header Section-header_sm">
+                                <h2 class="Section-title">{% trans 'Step 3. Payment method' %}
+                                </h2>
+                            </header>
+                            <div class="form-group">
+                                <div>
+                                    <label class="toggle">
+                                        <input type="radio" name="pay" value="online" checked="checked"/><span
+                                            class="toggle-box"></span><span
+                                            class="toggle-text">{% trans 'Online Card' %}</span>
+                                    </label>
+                                </div>
+                                <div>
+                                    <label class="toggle">
+                                        <input type="radio" name="pay" value="someone"/><span class="toggle-box"></span><span
+                                            class="toggle-text">{% trans 'Online from a random someone else s account' %}</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <input type="hidden" name="step" value="2">
+                            <div class="Order-footer">
+                                <a class="btn btn_success Order-next" id="pay_val" href="#step4">{% trans 'Next' %}</a>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="Order-block {% if check_step == '2' %}Order-block_OPEN{% endif %}" id="step4">
+                        <header class="Section-header Section-header_sm">
+                            <h2 class="Section-title">{% trans 'Step 4. Order Confirmation' %}</h2>
+                        </header>
+                        <!--+div.Order.-confirmation-->
+                        <div class="Order-infoBlock">
+                            <div class="Order-personal">
+                                <div class="row">
+                                    <div class="row-block">
+                                        <div class="Order-info">
+                                            <div class="Order-infoType">{% trans 'Full name' %}:</div>
+                                            <div class="Order-infoContent">
+                                                {{ request.user.get_full_name }}
+                                            </div>
+                                        </div>
+                                        <div class="Order-info">
+                                            <div class="Order-infoType">{% trans 'Telephone' %}:</div>
+                                            <div class="Order-infoContent">{{ request.user.get_phone }}</div>
+                                        </div>
+                                        <div class="Order-info">
+                                            <div class="Order-infoType">E-mail:</div>
+                                            <div class="Order-infoContent">{{ request.user.email }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="row-block">
+                                        <div class="Order-info Order-info_delivery">
+                                            <div class="Order-infoType">{% trans 'Type of delivery' %}:</div>
+                                            <div class="Order-infoContent">{{ request.POST.delivery }}</div>
+                                        </div>
+                                        <div class="Order-info">
+                                            <div class="Order-infoType">Город:</div>
+                                            <div class="Order-infoContent">{{ request.POST.city }}</div>
+                                        </div>
+                                        <div class="Order-info">
+                                            <div class="Order-infoType">{% trans 'Address' %}:</div>
+                                            <div class="Order-infoContent">{{ request.POST.address }}</div>
+                                        </div>
+                                        <div class="Order-info Order-info_pay">
+                                            <div class="Order-infoType">{% trans 'Payment' %}:</div>
+                                            <div class="Order-infoContent">{{ request.POST.pay }}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="Cart Cart_order">
+                                {% for product in basket %}
+                                    <div class="Cart-product">
+                                        <div class="Cart-block Cart-block_row">
+                                            <div class="Cart-block Cart-block_pict">
+                                                <a class="Cart-pict" href="{% url 'good_detail' pk=product.good.id %}">
+                                                    <img class="Cart-img"
+                                                            {% if product.catalog.good.image.file %}
+                                                         width="96px" src="{{ product.catalog.good.image.file.url }}"
+                                                         alt="{{ product.catalog.good.image.title }}"
+                                                            {% elif product.catalog.good.image.link %}
+                                                         width="96px" src="{{ product.catalog.good.image.link }}"
+                                                         alt="{{ product.catalog.good.image.title }}"
+                                                            {% else %}
+                                                         width="48px" src="{% static 'assets/img/icons/nophoto.svg' %}"
+                                                         alt="no image"
+                                                            {% endif %}
+                                                    />
+                                                </a>
+                                            </div>
+                                            <div class="Cart-block Cart-block_info">
+                                                <a class="Cart-title" href="#">{{ product.catalog.good.title }}</a>
+                                                <div class="Cart-desc">{{ product.catalog.good.good_type }}</div>
+                                            </div>
+                                            <div class="Cart-block Cart-block_price">
+                                                <div class="Cart-price">{{ product.sale_price }}₽
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="Cart-block Cart-block_row">
+                                            <div class="Cart-block Cart-block_seller">
+                                                <div>{% trans 'Seller' %}:
+                                                </div>
+                                                <div>{{ product.catalog.seller.title }}
+                                                </div>
+                                            </div>
+                                            <div class="Cart-block Cart-block_amount">{{ product.count }} {% trans 'pc.' %}.
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+
+                                <div class="Cart-total">
+                                    <div class="Cart-block Cart-block_total">
+                                        <strong class="Cart-title">{% trans 'Total' %}: </strong>
+                                        <span class="Cart-price">
+										{{ total_price|floatformat:2 }} ₽</span>
+                                        {% trans 'including the shipping price' %}
+                                        <span class="Cart-price"> {{ delivery_price|floatformat:2 }} </span>
+                                        {#                                        <span class="Cart-price_old">250.99$</span>#}
+                                    </div>
+                                    <div class="Cart-block">
+                                        <a class="btn btn_primary btn_lg"
+                                           href="{% url 'payment' %}">{% trans 'To pay' %}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="myModal" style="padding: 40px;">
+
+        <form class="form AuthForm" method="post">
+            <div class="AuthForm-card">
+                <b style="font-size: 35px;"
+                   class="form-group">{% trans 'Authorization' %}</b>
+                {% csrf_token %}
+
+                {% for field in login_form %}
+                    <div class="form-group">
+
+                        <div class="row-block">
+                            <label class="form-label" for="{{ field.auto_id }}">
+                                {{ field.label }}
+                            </label>
+
+                            <input id="{{ field.id_for_label }}"
+                                   class="form-input"
+                                   {% if field.field.max_length %}maxlength="{{ field.field.max_length }}"{% endif %}
+                                   name="{{ field.html_name }}"
+                                   type="{{ field.field.widget.input_type }}"
+                                   {% if field.value %}value="{{ field.value }}"{% endif %}
+                            />
+
+                            {% for error in field.errors %}
+                                <div class="form-error">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+
+
+                <div class="form-group">
+                    <button class="btn btn_primary form-btn" type="submit"
+                    >{% trans 'Log in' %}</button>
+                </div>
+
+                <div class="form-group">
+                    <a href="{% url 'password_reset' %}">{% trans 'Forgotten your password or username?' %}</a>
+
+                    <p>{% trans "Don't have an account?" %} <a
+                            href="{% url 'signup' %}">{% trans 'Register now' %}</a>
+                    </p>
+                </div>
+            </div>
+        </form>
+        <span id="myModal__close" class="close">ₓ</span>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'assets/js/getStepPayment.js' %}"></script>
+    <script src="{% static 'assets/js/mask.js' %}"></script>
+    <script src="{% static 'assets/js/HidePopUp.js' %}"></script>
+    <script src="{% static 'assets/js/click_url.js' %}"></script>
+{% endblock %}

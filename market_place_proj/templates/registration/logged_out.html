@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load i18n view_breadcrumbs %}
+
+{% block title %}{% trans 'Log out' %}{% endblock %}
+
+{% block content %}
+    <div class="Middle Middle_top">
+        {{ block.super }}
+
+        <div class="Section">
+            <div class="wrap">
+                <div class="AuthPage">
+                    <div class="AuthPage-title">
+                        {% trans 'Thanks for spending some quality time with the Web site today.' %}
+                    </div>
+
+                    <div class="AuthPage-info">
+                        <p><a href="{% url 'login' %}">{% translate 'Log in again' %}</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

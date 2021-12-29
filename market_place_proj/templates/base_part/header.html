@@ -1,0 +1,134 @@
+{% load i18n static mptt_tags sliders sidebar compare cart hot_prod %}
+
+
+{% block styles %}
+	<script src="{% static 'assets/js/choices.js' %}"></script>
+	<link rel="stylesheet" href="{% static 'assets/css/choices.css' %}">
+{% endblock %}
+
+<header class="Header">
+	<div class="ControlPanel">
+		<div class="wrap">
+			<div class="row ControlPanel-row">
+				<div class="row-block">
+					<div class="row ControlPanel-rowSplit">
+						<div class="row-block">
+							<a class="ControlPanel-title" href="#">{% trans 'Free Delivery' %}</a>
+						</div>
+
+						<div class="row-block hide_700"><span class="ControlPanel-title">{% trans 'Follow Us' %}</span>
+							<ul class="menu menu_img menu_smallImg ControlPanel-menu">
+								<li class="menu-item">
+									<a class="menu-link" href="#">
+										<img src="{% static 'assets/img/icons/socialHeader/fb.svg' %}" alt="fb.svg"/>
+									</a>
+								</li>
+								<li class="menu-item">
+									<a class="menu-link" href="#">
+										<img src="{% static 'assets/img/icons/socialHeader/tw.svg' %}" alt="tw.svg"/>
+									</a>
+								</li>
+								<li class="menu-item">
+									<a class="menu-link" href="#">
+										<img src="{% static 'assets/img/icons/socialHeader/in.svg' %}" alt="in.svg"/>
+									</a>
+								</li>
+								<li class="menu-item">
+									<a class="menu-link" href="#">
+										<img src="{% static 'assets/img/icons/socialHeader/pt.svg' %}" alt="pt.svg"/>
+									</a>
+								</li>
+								<li class="menu-item">
+									<a class="menu-link" href="#">
+										<img src="{% static 'assets/img/icons/socialHeader/mail.svg' %}"
+										     alt="mail.svg"/>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<nav class="row-block">
+					<div class="row ControlPanel-rowSplit">
+						<div class="row-block">
+							{% include 'base_part/widgets/locale.html' %}
+							{% if request.user.is_authenticated %}
+								<a class="ControlPanel-title" href="{% url 'account' %}">{% trans 'Account' %}</a>
+							{% else %}
+								<a class="ControlPanel-title" href="{% url 'login' %}">{% trans 'Log in' %}</a>
+							{% endif %}
+						</div>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</div>
+
+	<div class="wrap">
+		<div class="row Header-rowMain">
+			<div class="row-block Header-logo">
+				<a class="logo" href="{% url 'index' %}">
+					<img class="logo-image" src="{% static 'assets/img/logo.png' %}" alt="logo.png"/>
+				</a>
+			</div>
+
+			<nav class="row-block row-block_right Header-menu">
+				<div class="menuModal" id="navigate">
+					<ul class="menu menu_main">
+						<li class="menu-item">
+							<a class="menu-link" href="{% url 'index' %}">{% trans 'Home' %}</a>
+						</li>
+
+						<li class="menu-item">
+							<span class="menu-label menu-label_danger">{% trans 'New' %}</span>
+							<a class="menu-link" href="{% url 'popular' %}">{% trans 'Shop' %}</a>
+						</li>
+						<li class="menu-item">
+							<a class="menu-link" href="{% url 'sellers_list' %}">{% trans 'partners' %}</a>
+						</li>
+						<li class="menu-item">
+							<a class="menu-link" href={% url 'sale_list' %}>{% trans 'Sales' %}</a>
+						</li>
+						{% get_hot_prod as hot_id %}
+						{% if hot_id %}
+							<li class="menu-item">
+								<span class="menu-label menu-label_success">{% trans 'Hot' %}</span>
+								<a class="menu-link" href="{% url 'good_detail' pk=hot_id %}">{% trans 'Gallery' %}</a>
+							</li>
+						{% endif %}
+						<li class="menu-item">
+							<a class="menu-link" href="{% url 'contacts' %}">{% trans 'Contacts' %}</a>
+						</li>
+						<li class="menu-item">
+							<a class="menu-link" href="{% url 'catalog' %}">{% trans 'Purchase' %}</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+			<div class="row-block">
+				<div class="CartBlock-block">
+					{% get_compare_icon request %}
+					{% get_cart_icon request %}
+				</div>
+			</div>
+			<div class="row-block Header-trigger">
+				<a class="menuTrigger" href="#navigate">
+					<div class="menuTrigger-content">{% trans 'Show navigation' %}</div>
+					<span></span>
+					<span></span>
+					<span></span>
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="Header-searchWrap">
+		<div class="wrap">
+			{% get_categories %}
+			{% get_search_categories %}
+		</div>
+	</div>
+
+	{% main_slider request %}
+</header>
